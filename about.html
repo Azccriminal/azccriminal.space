@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - AZC Criminal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* Disable default cursor and set custom cursor */
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle, #0A0F1A, #000);
+            overflow: hidden;
+            font-family: 'Orbitron', sans-serif;
+            color: white;
+            text-align: center;
+            cursor: none; /* Disable the default cursor */
+        }
+
+        /* Custom Cybernetic Cursor */
+        .cursor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #00FFFF;
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease, background-color 0.2s ease;
+            z-index: 1000;
+        }
+
+        .cursor.active {
+            transform: translate(-50%, -50%) scale(1.5);
+            background-color: #FF00FF;
+            border-color: #FF00FF;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px 0;
+            text-align: center;
+            z-index: 10;
+            transition: background 0.3s ease;
+        }
+
+        .navbar a {
+            color: white;
+            font-size: 18px;
+            text-decoration: none;
+            margin: 0 20px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+            cursor: none; /* Make sure the custom cursor is used here as well */
+        }
+
+        .navbar a:hover {
+            color: #00FFFF;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.6);
+        }
+
+        /* Logo and Animation */
+        .logo {
+            font-size: 100px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            text-shadow: 0 0 15px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.6), 0 0 45px rgba(0, 255, 255, 0.4);
+            position: relative;
+            animation: logoColorChange 4s ease-in-out infinite, logoZoom 2s ease-in-out infinite;
+            margin-top: 80px; /* Adjusting position to avoid navbar overlap */
+        }
+
+        @keyframes logoColorChange {
+            0% { color: #00FFFF; }
+            50% { color: #FF00FF; }
+            100% { color: #00FFFF; }
+        }
+
+        @keyframes logoZoom {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .logo::after {
+            content: 'CRIMINAL';
+            display: block;
+            font-size: 40px;
+            letter-spacing: 3px;
+            margin-top: 20px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.4);
+            opacity: 0;
+            animation: fadeIn 2s ease-in-out forwards;
+            animation-delay: 2s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* About Section */
+        .about-content {
+            margin-top: 100px;
+            padding: 30px;
+            max-width: 900px;
+            text-align: left;
+        }
+
+        .about-content h2 {
+            font-size: 35px;
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            font-size: 18px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        /* Button Styles */
+        .cta-button {
+            margin-top: 50px;
+            padding: 15px 30px;
+            background: #00FFFF;
+            color: black;
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.6);
+            transition: background 0.3s ease, transform 0.3s ease;
+            z-index: 5; /* Make sure the button is above other elements */
+        }
+
+        .cta-button:hover {
+            background: #FF00FF;
+            transform: scale(1.1);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="background-stars"></div>
+
+    <!-- Navbar Section -->
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+    </div>
+
+    <!-- Logo Section -->
+    <div class="logo">AZC</div>
+
+    <!-- About Content Section -->
+    <div class="about-content">
+        <h2>About AZC Criminal</h2>
+        <p>Welcome to AZC Criminal, the ultimate platform for discovering the most elite projects and content in the criminal underworld. Our mission is to provide a high-end digital space for curious minds to delve into the mysteries and intrigue of the criminal world. AZC Criminal is for those who seek hidden truths, underground knowledge, and exclusive opportunities.</p>
+
+        <p>Our platform is driven by the idea that knowledge is power, and we aim to offer our visitors a chance to explore, learn, and engage with the most secretive and cutting-edge projects. Whether you're seeking to understand the cryptic world of cyber-crime or the subtlety of hidden criminal networks, AZC Criminal provides the resources and insights to guide you.</p>
+
+        <p>We believe that digital empowerment comes from gaining access to the unknown. Through AZC Criminal, you can connect with like-minded individuals, learn from industry leaders, and dive deep into the world that many people can only imagine.</p>
+
+        <p>Get ready to step into the future. Welcome to AZC Criminal.</p>
+
+        <button class="cta-button" id="exploreButton">Explore Projects</button>
+    </div>
+
+    <!-- Custom Cybernetic Cursor -->
+    <div class="cursor" id="cursor"></div>
+
+    <script>
+        // Get cursor and button elements
+        const cursor = document.getElementById('cursor');
+        const exploreButton = document.getElementById('exploreButton');
+
+        // Move cursor with mouse
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = `${e.pageX}px`;
+            cursor.style.top = `${e.pageY}px`;
+        });
+
+        // Add active class on click for cybernetic effect
+        document.addEventListener('mousedown', () => {
+            cursor.classList.add('active');
+        });
+
+        document.addEventListener('mouseup', () => {
+            cursor.classList.remove('active');
+        });
+
+        // Open modal on Explore Projects button click
+        exploreButton.addEventListener('click', () => {
+            alert("Explore Projects section will be coming soon!");
+        });
+    </script>
+</body>
+</html>

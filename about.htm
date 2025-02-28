@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - AZC Criminal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* Disable default cursor and set custom cursor */
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle, #0A0F1A, #000);
+            overflow: hidden;
+            font-family: 'Orbitron', sans-serif;
+            color: white;
+            text-align: center;
+            cursor: none; /* Disable the default cursor */
+        }
+
+        /* Custom Cybernetic Cursor */
+        .cursor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #00FFFF;
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease, background-color 0.2s ease;
+            z-index: 1000;
+        }
+
+        .cursor.active {
+            transform: translate(-50%, -50%) scale(1.5);
+            background-color: #FF00FF;
+            border-color: #FF00FF;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px 0;
+            text-align: center;
+            z-index: 10;
+            transition: background 0.3s ease;
+        }
+
+        .navbar a {
+            color: white;
+            font-size: 18px;
+            text-decoration: none;
+            margin: 0 20px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+            cursor: none; /* Ensure custom cursor is used here */
+        }
+
+        .navbar a:hover {
+            color: #00FFFF;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.6);
+        }
+
+        /* Logo and Animation */
+        .logo {
+            font-size: 100px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            text-shadow: 0 0 15px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.6), 0 0 45px rgba(0, 255, 255, 0.4);
+            position: relative;
+            animation: logoColorChange 4s ease-in-out infinite, logoZoom 2s ease-in-out infinite;
+            margin-top: 80px; /* Adjusting position to avoid navbar overlap */
+        }
+
+        @keyframes logoColorChange {
+            0% { color: #00FFFF; }
+            50% { color: #FF00FF; }
+            100% { color: #00FFFF; }
+        }
+
+        @keyframes logoZoom {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .logo::after {
+            content: 'CRIMINAL';
+            display: block;
+            font-size: 40px;
+            letter-spacing: 3px;
+            margin-top: 20px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.4);
+            opacity: 0;
+            animation: fadeIn 2s ease-in-out forwards;
+            animation-delay: 2s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* About Section */
+        .about-section {
+            margin-top: 100px;
+            padding: 30px;
+            max-width: 900px;
+            text-align: left;
+        }
+
+        .about-section h2 {
+            font-size: 35px;
+            margin-bottom: 20px;
+        }
+
+        .about-section p {
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        .about-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .about-section li {
+            font-size: 18px;
+            margin-bottom: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        /* Button Styles */
+        .cta-button {
+            margin-top: 50px;
+            padding: 15px 30px;
+            background: #00FFFF;
+            color: black;
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.6);
+            transition: background 0.3s ease, transform 0.3s ease;
+            z-index: 5;
+        }
+
+        .cta-button:hover {
+            background: #FF00FF;
+            transform: scale(1.1);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="background-stars"></div>
+
+    <!-- Navbar Section -->
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="#">Contact</a>
+    </div>
+
+    <!-- Logo Section -->
+    <div class="logo">AZC</div>
+
+    <!-- About Section -->
+    <div class="about-section">
+        <h2>About Us</h2>
+        <p>Azccriminal or otherwise known as azencompiler open source foundation criminal is a community focused on software development from a different perspective. Our main goal is to provide a platform structure based on cybersecurity and technology. In general, you can access a large list of the software we have developed from the services section. To support us, you can visit our contact-us page to donate or support the source tree structure.</p>
+
+        <h3>Our Mission</h3>
+        <p>Our general mission is to present the open source structure in a more developed way and to undertake bigger projects compared to our previous foundation which went bankrupt. However, our community structure is not managed by a specific person or personality, the copyrights are managed by the founders of Azccriminal.</p>
+
+        <h3>Our Core Values</h3>
+        <ul>
+            <li>ntegration and development structure: the projects we develop are mostly focused on structure integration</li>
+            <li>Cybersecurity tree structure: we have web-based realtime projects developed for cybersecurity</li>
+            <li>Stabilization: We develop by giving great importance to stabilization, but for those who use stable structure, we make developments by providing unstable-based support in some projects.</li>
+            <li></li>
+        </ul>
+
+        <h3>Why Choose Us?</h3>
+        <p>Because we are people who do not give up their ideologies for modern technology and the future. Every company you have seen so far has acted according to the market, but we develop software by acting for technology and the future. Despite our foundation going bankrupt, we did not give up and returned to be able to develop better. Instead of those companies that develop according to the market ecosystem and give up their own ideologies, you can join our long adventure that opens to reality and the future by choosing us and instead of being exploited by some open source projects, we can provide the opportunity to develop as people who value you and care about your contribution. Remember, we always live and act according to our ideology and spend the profit from the market according to our future and community structure. ~Azccriminal</p>
+
+        <button class="cta-button" id="exploreButton">Explore Our Services</button>
+    </div>
+
+    <!-- Custom Cybernetic Cursor -->
+    <div class="cursor" id="cursor"></div>
+
+    <script>
+        // Get cursor and button elements
+        const cursor = document.getElementById('cursor');
+        const exploreButton = document.getElementById('exploreButton');
+
+        // Move cursor with mouse
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = `${e.pageX}px`;
+            cursor.style.top = `${e.pageY}px`;
+        });
+
+        // Add active class on click for cybernetic effect
+        document.addEventListener('mousedown', () => {
+            cursor.classList.add('active');
+        });
+
+        document.addEventListener('mouseup', () => {
+            cursor.classList.remove('active');
+        });
+
+        // Open modal on Explore More Services button click
+        exploreButton.addEventListener('click', () => {
+            alert("Explore More Services section will be coming soon!");
+        });
+    </script>
+</body>
+</html>

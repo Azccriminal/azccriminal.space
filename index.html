@@ -25,6 +25,13 @@
             text-transform: uppercase;
             text-shadow: 0 0 15px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.6), 0 0 45px rgba(0, 255, 255, 0.4);
             position: relative;
+            animation: logoColorChange 4s ease-in-out infinite;
+        }
+
+        @keyframes logoColorChange {
+            0% { color: #00FFFF; }
+            50% { color: #FF00FF; }
+            100% { color: #00FFFF; }
         }
 
         .logo::after {
@@ -34,6 +41,18 @@
             letter-spacing: 3px;
             margin-top: 20px;
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.4);
+            opacity: 0;
+            animation: fadeIn 2s ease-in-out forwards;
+            animation-delay: 2s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
 
         .background-stars {
@@ -53,6 +72,29 @@
             }
             to {
                 background-position: 1000px 1000px;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 80px;
+            }
+
+            .logo::after {
+                font-size: 30px;
+                margin-top: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 60px;
+            }
+
+            .logo::after {
+                font-size: 25px;
+                margin-top: 10px;
             }
         }
     </style>

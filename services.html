@@ -9,17 +9,17 @@
         /* Disable default cursor and set custom cursor */
         body {
             margin: 0;
-            height: 100vh;
+            min-height: 100vh; /* Ensure the content is at least as tall as the viewport */
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start; /* Align items to the top */
             align-items: center;
             background: radial-gradient(circle, #0A0F1A, #000);
-            overflow: hidden;
             font-family: 'Orbitron', sans-serif;
             color: white;
             text-align: center;
             cursor: none; /* Disable the default cursor */
+            overflow-y: auto; /* Enable vertical scrolling */
         }
 
         /* Custom Cybernetic Cursor */
@@ -198,8 +198,6 @@
             <p>The main purpose is to determine the attack and necessary scenarios by scanning other cyber attack object structures, providing the basis for the cyber tree structure. With cyber detection, you will no longer be in a situation where you cannot understand or identify any object or creature.</p>
             <a href="https://gitlab.com/Azccriminalus/cybertree-visual">Cyber-tree Visual Source code</a>
         </div>
-
-    
 
         <button class="cta-button" id="exploreButton">Explore More Services</button>
     </div>

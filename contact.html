@@ -8,13 +8,13 @@
     <style>
         body {
             margin: 0;
-            height: 100vh;
+            min-height: 100vh; /* Sayfa boyutunu 100vh ile sınırla, altındaki içerikler için kaydırma ekle */
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
             background: radial-gradient(circle, #0A0F1A, #000);
-            overflow: hidden;
+            overflow-y: auto; /* Sayfada kaydırma ekle */
             font-family: 'Orbitron', sans-serif;
             color: white;
             text-align: center;

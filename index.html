@@ -10,6 +10,7 @@
             margin: 0;
             height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             background: radial-gradient(circle, #0A0F1A, #000);
@@ -19,6 +20,33 @@
             text-align: center;
         }
 
+        /* Navbar Styles */
+        .navbar {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px 0;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .navbar a {
+            color: white;
+            font-size: 18px;
+            text-decoration: none;
+            margin: 0 20px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: #00FFFF;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.6);
+        }
+
+        /* Logo and Animation */
         .logo {
             font-size: 100px;
             letter-spacing: 5px;
@@ -26,6 +54,7 @@
             text-shadow: 0 0 15px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.6), 0 0 45px rgba(0, 255, 255, 0.4);
             position: relative;
             animation: logoColorChange 4s ease-in-out infinite;
+            margin-top: 80px; /* Adjusting position to avoid navbar overlap */
         }
 
         @keyframes logoColorChange {
@@ -85,6 +114,10 @@
                 font-size: 30px;
                 margin-top: 15px;
             }
+
+            .navbar a {
+                font-size: 16px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -96,11 +129,25 @@
                 font-size: 25px;
                 margin-top: 10px;
             }
+
+            .navbar a {
+                font-size: 14px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="background-stars"></div>
+
+    <!-- Navbar Section -->
+    <div class="navbar">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+    </div>
+
+    <!-- Logo Section -->
     <div class="logo">AZC</div>
 </body>
 </html>

@@ -9,13 +9,13 @@
         /* Disable default cursor and set custom cursor */
         body {
             margin: 0;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
             background: radial-gradient(circle, #0A0F1A, #000);
-            overflow: hidden;
+            overflow-y: scroll; /* Enable vertical scrolling */
             font-family: 'Orbitron', sans-serif;
             color: white;
             text-align: center;
@@ -118,7 +118,7 @@
 
         /* About Section */
         .about-section {
-            margin-top: 100px;
+            margin-top: 150px; /* Adjusting position to avoid navbar overlap */
             padding: 30px;
             max-width: 900px;
             text-align: left;
@@ -196,10 +196,9 @@
 
         <h3>Our Core Values</h3>
         <ul>
-            <li>ntegration and development structure: the projects we develop are mostly focused on structure integration</li>
+            <li>Integration and development structure: the projects we develop are mostly focused on structure integration</li>
             <li>Cybersecurity tree structure: we have web-based realtime projects developed for cybersecurity</li>
             <li>Stabilization: We develop by giving great importance to stabilization, but for those who use stable structure, we make developments by providing unstable-based support in some projects.</li>
-            <li></li>
         </ul>
 
         <h3>Why Choose Us?</h3>

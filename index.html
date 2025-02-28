@@ -21,6 +21,27 @@
             transition: background 1s ease-in-out;
         }
 
+        /* Custom Cybernetic Cursor */
+        .cursor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #00FFFF;
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease, background-color 0.2s ease;
+            z-index: 1000;
+        }
+
+        .cursor.active {
+            transform: translate(-50%, -50%) scale(1.5);
+            background-color: #FF00FF;
+            border-color: #FF00FF;
+        }
+
         /* Navbar Styles */
         .navbar {
             position: absolute;
@@ -202,5 +223,28 @@
 
     <!-- Call-to-Action Button -->
     <button class="cta-button">Get Started</button>
+
+    <!-- Custom Cybernetic Cursor -->
+    <div class="cursor" id="cursor"></div>
+
+    <script>
+        // Get cursor element
+        const cursor = document.getElementById('cursor');
+
+        // Move cursor with mouse
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = `${e.pageX}px`;
+            cursor.style.top = `${e.pageY}px`;
+        });
+
+        // Add active class on click for cybernetic effect
+        document.addEventListener('mousedown', () => {
+            cursor.classList.add('active');
+        });
+
+        document.addEventListener('mouseup', () => {
+            cursor.classList.remove('active');
+        });
+    </script>
 </body>
 </html>

@@ -18,6 +18,7 @@
             font-family: 'Orbitron', sans-serif;
             color: white;
             text-align: center;
+            transition: background 1s ease-in-out;
         }
 
         /* Navbar Styles */
@@ -29,6 +30,7 @@
             padding: 15px 0;
             text-align: center;
             z-index: 10;
+            transition: background 0.3s ease;
         }
 
         .navbar a {
@@ -39,11 +41,30 @@
             letter-spacing: 2px;
             text-transform: uppercase;
             transition: all 0.3s ease;
+            position: relative;
         }
 
         .navbar a:hover {
             color: #00FFFF;
             text-shadow: 0 0 10px rgba(0, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.6);
+        }
+
+        .navbar a::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #00FFFF;
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-out;
+        }
+
+        .navbar a:hover::before {
+            transform: scaleX(1);
+            transform-origin: bottom left;
         }
 
         /* Logo and Animation */
@@ -53,7 +74,7 @@
             text-transform: uppercase;
             text-shadow: 0 0 15px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.6), 0 0 45px rgba(0, 255, 255, 0.4);
             position: relative;
-            animation: logoColorChange 4s ease-in-out infinite;
+            animation: logoColorChange 4s ease-in-out infinite, logoZoom 2s ease-in-out infinite;
             margin-top: 80px; /* Adjusting position to avoid navbar overlap */
         }
 
@@ -61,6 +82,12 @@
             0% { color: #00FFFF; }
             50% { color: #FF00FF; }
             100% { color: #00FFFF; }
+        }
+
+        @keyframes logoZoom {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
         }
 
         .logo::after {
@@ -84,6 +111,7 @@
             }
         }
 
+        /* Parallax effect for background */
         .background-stars {
             position: absolute;
             width: 100%;
@@ -92,7 +120,8 @@
             left: 0;
             background: url('https://source.unsplash.com/1600x900/?stars,galaxy') repeat;
             opacity: 0.3;
-            animation: stars 100s linear infinite;
+            animation: stars 60s linear infinite;
+            transform: scale(1.2);
         }
 
         @keyframes stars {
@@ -134,6 +163,27 @@
                 font-size: 14px;
             }
         }
+
+        /* Call-to-Action Button */
+        .cta-button {
+            margin-top: 50px;
+            padding: 15px 30px;
+            background: #00FFFF;
+            color: black;
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.6);
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: #FF00FF;
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body>
@@ -149,5 +199,8 @@
 
     <!-- Logo Section -->
     <div class="logo">AZC</div>
+
+    <!-- Call-to-Action Button -->
+    <button class="cta-button">Get Started</button>
 </body>
 </html>

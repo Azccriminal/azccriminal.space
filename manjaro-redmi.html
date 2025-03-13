@@ -83,6 +83,12 @@
         .download-button:active {
             transform: scale(0.9);
         }
+
+        .error-message {
+            color: red;
+            margin-top: 20px;
+            display: none; /* Hidden by default */
+        }
     </style>
 </head>
 <body>
@@ -95,11 +101,14 @@
     <h1 class="logo">Manjaro Redmi Kernel Project</h1>
     <div class="download-section" id="downloads">
         <h2>Download Compiled Kernel</h2>
-        <a href="compiled_kernel_v1.0.1.zip" class="download-button">Download v1.0.1</a>
-        <a href="compiled_kernel_v1.0.2.zip" class="download-button">Download v1.0.2</a>
+        <a href="compiled_kernel_v1.0.1.zip" class="download-button" id="downloadButton">Download 6.9.3-3-MANJARO-ARM-REDMI</a>
+        <p class="error-message" id="errorMessage">Error: Zip files are not accessible.</p>
     </div>
     <script>
         const cursor = document.getElementById('cursor');
+        const downloadButton = document.getElementById('downloadButton');
+        const errorMessage = document.getElementById('errorMessage');
+
         document.addEventListener('mousemove', (e) => {
             cursor.style.left = `${e.pageX}px`;
             cursor.style.top = `${e.pageY}px`;
@@ -111,6 +120,28 @@
 
         document.addEventListener('mouseup', () => {
             cursor.classList.remove('punch');
+        });
+
+        // Check if the zip files exist
+        downloadButton.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevent default link behavior
+            const zipFiles = [
+                'compiled_kernel_v1.0.1.zip',
+                'compiled_kernel_v1.0.2.zip'
+            ];
+
+            // Simulate a check for zip file accessibility (replace this with an actual check if needed)
+            let filesAvailable = zipFiles.every(file => {
+                // Simulate checking file existence
+                // In a real application, you would typically make an AJAX request to check file existence
+                return false; // Simulating that files are not accessible
+            });
+
+            if (!filesAvailable) {
+                errorMessage.style.display = 'block'; // Show error message
+            } else {
+                window.location.href = zipFiles[0]; // Redirect to the first zip file
+            }
         });
     </script>
 </body>

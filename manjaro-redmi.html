@@ -31,6 +31,12 @@
             z-index: 1000;
         }
 
+        .cursor.punch {
+            transform: translate(-50%, -50%) scale(2);
+            background-color: red;
+            border-color: red;
+        }
+
         .navbar {
             position: fixed;
             top: 0;
@@ -53,7 +59,7 @@
             text-shadow: 0 0 15px #00FF00;
         }
 
-        .project-section {
+        .download-section {
             margin-top: 100px;
             max-width: 900px;
             padding: 20px;
@@ -61,16 +67,21 @@
             border-radius: 10px;
         }
 
-        .patch-notes {
-            text-align: left;
-            padding: 20px;
+        .download-button {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 10px;
+            background: #00FF00;
+            color: black;
+            font-size: 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            box-shadow: 0 0 10px #00FF00;
+            transition: transform 0.1s ease;
         }
 
-        .patch-item {
-            background: rgba(0, 255, 0, 0.2);
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
+        .download-button:active {
+            transform: scale(0.9);
         }
     </style>
 </head>
@@ -78,28 +89,28 @@
     <div class="cursor" id="cursor"></div>
     <div class="navbar">
         <a href="#">Home</a>
-        <a href="#patch-notes">Patch Notes</a>
+        <a href="#downloads">Downloads</a>
         <a href="#contact">Contact</a>
     </div>
     <h1 class="logo">Manjaro Redmi Kernel Project</h1>
-    <div class="project-section" id="patch-notes">
-        <h2>Kernel Patch Notes</h2>
-        <div class="patch-notes">
-            <div class="patch-item">
-                <h3>v1.0.1 - New Features</h3>
-                <p>GPU optimizations added for Redmi devices.</p>
-            </div>
-            <div class="patch-item">
-                <h3>v1.0.2 - Performance Boost</h3>
-                <p>CPU frequency management improved.</p>
-            </div>
-        </div>
+    <div class="download-section" id="downloads">
+        <h2>Download Compiled Kernel</h2>
+        <a href="compiled_kernel_v1.0.1.zip" class="download-button">Download v1.0.1</a>
+        <a href="compiled_kernel_v1.0.2.zip" class="download-button">Download v1.0.2</a>
     </div>
     <script>
         const cursor = document.getElementById('cursor');
         document.addEventListener('mousemove', (e) => {
             cursor.style.left = `${e.pageX}px`;
             cursor.style.top = `${e.pageY}px`;
+        });
+
+        document.addEventListener('mousedown', () => {
+            cursor.classList.add('punch');
+        });
+
+        document.addEventListener('mouseup', () => {
+            cursor.classList.remove('punch');
         });
     </script>
 </body>

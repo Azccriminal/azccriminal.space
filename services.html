@@ -151,6 +151,37 @@
         .service-item p {
             font-size: 18px;
         }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Parallax effect for background */
+        .background-stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: url('https://raw.githubusercontent.com/Azccriminal/azccriminal.space/main/azccriminal-space.jpg') repeat;
+            opacity: 0.3;
+            animation: stars 60s linear infinite;
+            transform: scale(1.2);
+        }
+
+        @keyframes stars {
+            from {
+                background-position: 0 0;
+            }
+            to {
+                background-position: 1000px 1000px;
+            }
+        }
 
         /* Button Styles */
         .cta-button {

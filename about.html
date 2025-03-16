@@ -193,6 +193,74 @@ body {
     background: #FF00FF;
     transform: scale(1.1);
 }
+/* Mobil Cihazlar için Stil */
+@media screen and (max-width: 768px) {
+
+    /* Arka Plan - Daha az hareket */
+    @keyframes starsMove {
+        from {
+            background-position: 0 0;
+        }
+        to {
+            background-position: 1000px 1000px;
+        }
+    }
+
+    /* Navbar - Daha küçük ve kompakt */
+    .navbar {
+        padding: 10px 0;
+    }
+
+    .navbar a {
+        font-size: 14px;
+        margin: 0 10px;
+    }
+
+    /* Logo - Küçültüldü ve hizalandı */
+    .logo {
+        font-size: 60px;
+        margin-top: 50px;
+        letter-spacing: 3px;
+    }
+
+    .logo::after {
+        font-size: 20px;
+        margin-top: 10px;
+    }
+
+    /* Hakkında Bölümü */
+    .about-section {
+        margin-top: 80px;
+        padding: 20px;
+        width: 90%;
+        text-align: center;
+    }
+
+    .about-section h2 {
+        font-size: 28px;
+    }
+
+    .about-section p,
+    .about-section li {
+        font-size: 16px;
+    }
+
+    .about-section li {
+        padding: 8px;
+    }
+
+    /* Butonlar */
+    .cta-button {
+        font-size: 16px;
+        padding: 12px 24px;
+    }
+
+    /* Özel İmleç Mobilde Gizlendi */
+    .cursor {
+        display: none;
+    }
+
+}
 
 </style>
 </head>

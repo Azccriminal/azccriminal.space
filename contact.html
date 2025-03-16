@@ -7,29 +7,29 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <link rel="icon" href="https://raw.githubusercontent.com/Azccriminal/azccriminal.space/main/azccriminal.jpg">
     <style>
-      .background-stars {
-    position: absolute;
-    width: 150%;
-    height: 150%;
+  /* TAM EKRAN ARKA PLAN - PARALLAX YILDIZ ANİMASYONU */
+.background-stars {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
     top: 0;
     left: 0;
-    background: url('https://raw.githubusercontent.com/Azccriminal/azccriminal.space/main/azccriminal-space.jpg')
-                no-repeat center center;
+    background: url('https://raw.githubusercontent.com/Azccriminal/azccriminal.space/main/azccriminal-space.jpg') 
+                repeat center center;
     opacity: 0.3;
-    animation: stars 60s linear infinite;
+    animation: starsMove 60s linear infinite;
     background-attachment: scroll;
-    background-position: center center;
     background-size: cover;
-    background-repeat: repeat;
-    transform: scale(1.2);
+    z-index: -1;
 }
 
-@keyframes stars {
+/* Yıldızlı arka planın hareket etmesi için parallax efekti */
+@keyframes starsMove {
     from {
         background-position: 0 0;
     }
     to {
-        background-position: 1500px 1500px;
+        background-position: 2000px 2000px; /* Yatay ve dikey kaydırma */
     }
 }
 

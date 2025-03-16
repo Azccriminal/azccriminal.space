@@ -194,6 +194,43 @@
                 display: none;
             }
         }
+        /* Mobil Cihazlar için Stil */
+@media screen and (max-width: 768px) {
+    /* Navbar - Daha küçük ve sabit üstte */
+    .navbar {
+        padding: 10px 0;
+        font-size: 14px;
+    }
+
+    .navbar a {
+        font-size: 14px;
+        margin: 0 10px;
+    }
+
+    /* Logo - Daha küçük ve ortalanmış */
+    .logo {
+        font-size: 60px;
+        margin-top: 50px;
+        letter-spacing: 3px;
+    }
+
+    .logo::after {
+        font-size: 20px;
+        margin-top: 10px;
+    }
+
+    /* Donate Button - Daha iyi mobil görünüm */
+    .donate-button {
+        font-size: 16px;
+        padding: 12px 24px;
+    }
+
+    /* Özel İmleç Mobilde Gizlendi */
+    .cursor {
+        display: none;
+    }
+}
+
     </style>
 </head>
 <body>

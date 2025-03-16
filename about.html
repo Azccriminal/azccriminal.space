@@ -7,34 +7,31 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <link rel="icon" href="https://raw.githubusercontent.com/Azccriminal/azccriminal.space/main/azccriminal.jpg">
     <style>
-   /* Background Stars */
-.background-stars {
+        .background-stars {
     position: absolute;
     width: 150%;
-    height: 500%;
+    height: 250%;
     top: 0;
     left: 0;
-    background: url('https://raw.githubusercontent.com/Azccriminal/azccriminal.space/main/azccriminal-space.jpg') 
+    background: url('https://raw.githubusercontent.com/Azccriminal/azccriminal.space/main/azccriminal-space.jpg')
                 no-repeat center center;
     opacity: 0.3;
     animation: stars 60s linear infinite;
-    background-attachment: scroll; /* Scroll background with the page */
-    background-position: center center; /* Ensure backgrounds stay centered */
-    background-size: cover; /* Make sure backgrounds cover the entire viewport */
-    background-repeat: repeat; /* Make the backgrounds repeat across the entire screen */
-    transform: scale(1,2); /* Optional scaling for parallax effect */
+    background-attachment: scroll;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: repeat;
+    transform: scale(1.2);
 }
 
-/* Parallax effect animation */
 @keyframes stars {
     from {
         background-position: 0 0;
     }
     to {
-        background-position: 30000px 30000px; /* Ensures smooth background animation */
+        background-position: 1500px 1500px;
     }
 }
-
 /* Disable default cursor and set custom cursor */
 body {
     margin: 0;

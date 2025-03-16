@@ -6,206 +6,189 @@
     <title>Services - AZC Criminal</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <link rel="icon" href="https://raw.githubusercontent.com/Azccriminal/azccriminal.space/main/azccriminal.jpg">
-    <style>
-        /* Disable default cursor and set custom cursor */
-        body {
-            margin: 0;
-            min-height: 100vh; /* Ensure the content is at least as tall as the viewport */
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start; /* Align items to the top */
-            align-items: center;
-            background: radial-gradient(circle, #0A0F1A, #000);
-            font-family: 'Orbitron', sans-serif;
-            color: white;
-            text-align: center;
-            cursor: none; /* Disable the default cursor */
-            overflow-y: auto; /* Enable vertical scrolling */
-        }
+<style>
+    /* General Body Styles */
+    body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        background: radial-gradient(circle, #0A0F1A, #000);
+        font-family: 'Orbitron', sans-serif;
+        color: white;
+        text-align: center;
+        cursor: none;
+        overflow-y: auto;
+    }
 
-        /* Custom Cybernetic Cursor */
-        .cursor {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 20px;
-            height: 20px;
-            border: 2px solid #00FFFF;
-            border-radius: 50%;
-            pointer-events: none;
-            transform: translate(-50%, -50%);
-            transition: transform 0.1s ease, background-color 0.2s ease;
-            z-index: 1000;
-        }
+    /* Custom Cybernetic Cursor */
+    .cursor {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 20px;
+        height: 20px;
+        border: 2px solid #00FFFF;
+        border-radius: 50%;
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+        transition: transform 0.1s ease, background-color 0.2s ease;
+        z-index: 1000;
+    }
 
-        .cursor.active {
-            transform: translate(-50%, -50%) scale(1.5);
-            background-color: #FF00FF;
-            border-color: #FF00FF;
-        }
+    .cursor.active {
+        transform: translate(-50%, -50%) scale(1.5);
+        background-color: #FF00FF;
+        border-color: #FF00FF;
+    }
 
-        /* Navbar Styles */
-        .navbar {
-            position: absolute;
-            top: 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 15px 0;
-            text-align: center;
-            z-index: 10;
-            transition: background 0.3s ease;
-        }
+    /* Navbar Styles */
+    .navbar {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 15px 0;
+        text-align: center;
+        z-index: 10;
+        transition: background 0.3s ease;
+    }
 
-        .navbar a {
-            color: white;
-            font-size: 18px;
-            text-decoration: none;
-            margin: 0 20px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-            position: relative;
-            cursor: none; /* Ensure custom cursor is used here */
-        }
+    .navbar a {
+        color: white;
+        font-size: 18px;
+        text-decoration: none;
+        margin: 0 20px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+        position: relative;
+        cursor: none;
+    }
 
-        .navbar a:hover {
-            color: #00FFFF;
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.6);
-        }
+    .navbar a:hover {
+        color: #00FFFF;
+        text-shadow: 0 0 10px rgba(0, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.6);
+    }
 
-        /* Logo and Animation */
-        .logo {
-            font-size: 100px;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            text-shadow: 0 0 15px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.6), 0 0 45px rgba(0, 255, 255, 0.4);
-            position: relative;
-            animation: logoColorChange 4s ease-in-out infinite, logoZoom 2s ease-in-out infinite;
-            margin-top: 80px; /* Adjusting position to avoid navbar overlap */
-        }
+    /* Logo and Animation */
+    .logo {
+        font-size: 100px;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        text-shadow: 0 0 15px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.6), 0 0 45px rgba(0, 255, 255, 0.4);
+        position: relative;
+        animation: logoColorChange 4s ease-in-out infinite, logoZoom 2s ease-in-out infinite;
+        margin-top: 80px;
+    }
 
-        @keyframes logoColorChange {
-            0% { color: #00FFFF; }
-            50% { color: #FF00FF; }
-            100% { color: #00FFFF; }
-        }
+    @keyframes logoColorChange {
+        0% { color: #00FFFF; }
+        50% { color: #FF00FF; }
+        100% { color: #00FFFF; }
+    }
 
-        @keyframes logoZoom {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
+    @keyframes logoZoom {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
 
-        .logo::after {
-            content: 'CRIMINAL';
-            display: block;
-            font-size: 40px;
-            letter-spacing: 3px;
-            margin-top: 20px;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.4);
-            opacity: 0;
-            animation: fadeIn 2s ease-in-out forwards;
-            animation-delay: 2s;
-        }
+    .logo::after {
+        content: 'CRIMINAL';
+        display: block;
+        font-size: 40px;
+        letter-spacing: 3px;
+        margin-top: 20px;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.4);
+        opacity: 0;
+        animation: fadeIn 2s ease-in-out forwards;
+        animation-delay: 2s;
+    }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
 
-        /* Services Section */
-        .services-section {
-            margin-top: 100px;
-            padding: 30px;
-            max-width: 900px;
-            text-align: left;
-        }
+    /* Services Section */
+    .services-section {
+        margin-top: 100px;
+        padding: 30px;
+        max-width: 900px;
+        text-align: left;
+    }
 
-        .services-section h2 {
-            font-size: 35px;
-            margin-bottom: 20px;
-        }
+    .services-section h2 {
+        font-size: 35px;
+        margin-bottom: 20px;
+    }
 
-        .service-item {
-            background: rgba(0, 0, 0, 0.8);
-            padding: 20px;
-            margin: 15px 0;
-            border-radius: 8px;
-            transition: background 0.3s ease;
-        }
+    .service-item {
+        background: rgba(0, 0, 0, 0.8);
+        padding: 20px;
+        margin: 15px 0;
+        border-radius: 8px;
+        transition: background 0.3s ease;
+    }
 
-        .service-item:hover {
-            background: #00FFFF;
-            cursor: pointer;
-        }
+    .service-item:hover {
+        background: #00FFFF;
+        cursor: pointer;
+    }
 
-        .service-item h3 {
-            font-size: 28px;
-            margin-bottom: 10px;
-        }
+    .service-item h3 {
+        font-size: 28px;
+        margin-bottom: 10px;
+    }
 
-        .service-item p {
-            font-size: 18px;
-        }
-        
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
+    .service-item p {
+        font-size: 18px;
+    }
 
-        /* Parallax effect for background */
-        .background-stars {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            background: url('https://raw.githubusercontent.com/Azccriminal/azccriminal.space/main/azccriminal-space.jpg') repeat;
-            opacity: 0.3;
-            animation: stars 60s linear infinite;
-            transform: scale(1.2);
-        }
+    /* Parallax effect for background */
+    .background-stars {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: url('https://raw.githubusercontent.com/Azccriminal/azccriminal.space/main/azccriminal-space.jpg') repeat;
+        opacity: 0.3;
+        animation: stars 60s linear infinite;
+        transform: scale(1.2);
+    }
 
-        @keyframes stars {
-            from {
-                background-position: 0 0;
-            }
-            to {
-                background-position: 1000px 1000px;
-            }
-        }
+    @keyframes stars {
+        from { background-position: 0 0; }
+        to { background-position: 1000px 1000px; }
+    }
 
-        /* Button Styles */
-        .cta-button {
-            margin-top: 50px;
-            padding: 15px 30px;
-            background: #00FFFF;
-            color: black;
-            font-size: 20px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.6);
-            transition: background 0.3s ease, transform 0.3s ease;
-            z-index: 5;
-        }
+    /* Button Styles */
+    .cta-button {
+        margin-top: 50px;
+        padding: 15px 30px;
+        background: #00FFFF;
+        color: black;
+        font-size: 20px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        box-shadow: 0 0 15px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.6);
+        transition: background 0.3s ease, transform 0.3s ease;
+        z-index: 5;
+    }
 
-        .cta-button:hover {
-            background: #FF00FF;
-            transform: scale(1.1);
-        }
+    .cta-button:hover {
+        background: #FF00FF;
+        transform: scale(1.1);
+    }
+</style>
 
-    </style>
 </head>
 <body>
     <div class="background-stars"></div>

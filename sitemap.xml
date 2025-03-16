@@ -4,24 +4,24 @@
         <loc>https://azccriminal.space/</loc>
         <lastmod>2025-03-16</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.1</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://azccriminal.space/about.html</loc>
         <lastmod>2025-03-16</lastmod>
         <changefreq>weekly</changefreq>
-        <priority>0.1</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://azccriminal.space/services.html</loc>
         <lastmod>2025-03-16</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.1</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://azccriminal.space/contact.html</loc>
         <lastmod>2025-03-16</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.1</priority>
+        <priority>0.9</priority>
     </url>
 </urlset>

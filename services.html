@@ -6,22 +6,26 @@
     <title>Services - AZC Criminal</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <link rel="icon" href="https://raw.githubusercontent.com/Azccriminal/azccriminal.space/main/azccriminal.jpg">
-<style>
-         body {
-    margin: 0;
-    height: 100%; /* Sayfa içeriği tüm ekranı kaplasın */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    background: radial-gradient(circle, #0A0F1A, #000);
-    font-family: 'Orbitron', sans-serif;
-    color: white;
-    text-align: center;
-    cursor: none;
-    overflow-y: scroll; /* Sayfa içeriği kaydırılabilir */
-}
+</head>
 
+    <style>
+        /* Disable default cursor and set custom cursor */
+        body {
+            margin: 0;
+            min-height: 100vh; /* Ensure the content is at least as tall as the viewport */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Align items to the top */
+            align-items: center;
+            background: radial-gradient(circle, #0A0F1A, #000);
+            font-family: 'Orbitron', sans-serif;
+            color: white;
+            text-align: center;
+            cursor: none; /* Disable the default cursor */
+            overflow-y: auto; /* Enable vertical scrolling */
+        }
+
+        /* Custom Cybernetic Cursor */
         .cursor {
             position: fixed;
             top: 0;
@@ -42,6 +46,7 @@
             border-color: #FF00FF;
         }
 
+        /* Navbar Styles */
         .navbar {
             position: absolute;
             top: 0;
@@ -61,6 +66,8 @@
             letter-spacing: 2px;
             text-transform: uppercase;
             transition: all 0.3s ease;
+            position: relative;
+            cursor: none; /* Ensure custom cursor is used here */
         }
 
         .navbar a:hover {
@@ -68,6 +75,7 @@
             text-shadow: 0 0 10px rgba(0, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.6);
         }
 
+        /* Logo and Animation */
         .logo {
             font-size: 100px;
             letter-spacing: 5px;
@@ -75,7 +83,7 @@
             text-shadow: 0 0 15px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.6), 0 0 45px rgba(0, 255, 255, 0.4);
             position: relative;
             animation: logoColorChange 4s ease-in-out infinite, logoZoom 2s ease-in-out infinite;
-            margin-top: 80px;
+            margin-top: 80px; /* Adjusting position to avoid navbar overlap */
         }
 
         @keyframes logoColorChange {
@@ -91,7 +99,7 @@
         }
 
         .logo::after {
-            content: 'CONTACT';
+            content: 'CRIMINAL';
             display: block;
             font-size: 40px;
             letter-spacing: 3px;
@@ -111,78 +119,43 @@
             }
         }
 
-        .contact-form {
-            margin-top: 80px;
-            max-width: 900px;
-            width: 100%;
+        /* Services Section */
+        .services-section {
+            margin-top: 100px;
             padding: 30px;
+            max-width: 900px;
             text-align: left;
+        }
+
+        .services-section h2 {
+            font-size: 35px;
+            margin-bottom: 20px;
+        }
+
+        .service-item {
             background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            margin: 15px 0;
             border-radius: 8px;
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 15px;
-            margin: 10px 0;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            letter-spacing: 1px;
-        }
-
-        .contact-form input[type="submit"] {
-            background: #00FFFF;
-            border: none;
-            color: black;
-            cursor: pointer;
             transition: background 0.3s ease;
         }
 
-        .contact-form input[type="submit"]:hover {
-            background: #FF00FF;
+        .service-item:hover {
+            background: #00FFFF;
+            cursor: pointer;
         }
 
-        .contact-section {
-            margin-top: 30px;
+        .service-item h3 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .service-item p {
             font-size: 18px;
         }
+        
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        /* Parallax effect for background */
-    .background-stars {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background: url('https://raw.githubusercontent.com/Azccriminal/azccriminal.space/main/azccriminal-space.jpg') no-repeat center center;
-    background-size: cover; /* Arka planın tüm ekranı kaplamasını sağlar */
-    opacity: 0.3;
-    animation: stars 60s linear infinite;
-    transform: scale(1.2);
-}
-
-@keyframes stars {
-    from {
-        background-position: 0 0;
-    }
-    to {
-        background-position: 1000px 1000px;
-    }
-}
-
+        /* Button Styles */
         .cta-button {
             margin-top: 50px;
             padding: 15px 30px;
@@ -203,9 +176,8 @@
             background: #FF00FF;
             transform: scale(1.1);
         }
-</style>
 
-</head>
+    </style>
 <body>
     <div class="background-stars"></div>
 

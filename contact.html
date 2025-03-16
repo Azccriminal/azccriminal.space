@@ -197,6 +197,71 @@ body {
     background: #FF00FF;
     transform: scale(1.1);
 }
+/* Mobil Cihazlar için Stil */
+@media screen and (max-width: 768px) {
+    
+    /* Arka Plan - Daha yavaş kayma efekti */
+    @keyframes starsMove {
+        from {
+            background-position: 0 0;
+        }
+        to {
+            background-position: 1000px 1000px; /* Daha az kaydırma hareketi */
+        }
+    }
+
+    /* Navbar - Daha küçük ve sabit üstte */
+    .navbar {
+        padding: 10px 0;
+        font-size: 14px;
+    }
+
+    .navbar a {
+        font-size: 14px;
+        margin: 0 10px;
+    }
+
+    /* Logo - Daha küçük ve ortalanmış */
+    .logo {
+        font-size: 60px;
+        margin-top: 50px;
+        letter-spacing: 3px;
+    }
+
+    .logo::after {
+        font-size: 20px;
+        margin-top: 10px;
+    }
+
+    /* İletişim Formu - Daha iyi mobil görünüm */
+    .contact-form {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .contact-form input[type="submit"] {
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    /* Butonlar - Daha kompakt */
+    .cta-button {
+        font-size: 16px;
+        padding: 12px 24px;
+    }
+
+    /* Özel İmleç Mobilde Gizlendi */
+    .cursor {
+        display: none;
+    }
+
+}
 
 
     </style>

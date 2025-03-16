@@ -26,20 +26,18 @@
 }
 
 .background-stars {
-    position: absolute;
-    width: 150%;
-    height: 150%;
+    position: fixed; /* Sayfa kaydırıldığında sabit kalır */
     top: 0;
     left: 0;
+    width: 100vw; /* Tüm ekran genişliği */
+    height: 100vh; /* Tüm ekran yüksekliği */
     background: url('https://raw.githubusercontent.com/Azccriminal/azccriminal.space/main/azccriminal-space.jpg')
                 no-repeat center center;
     opacity: 0.3;
     animation: stars 60s linear infinite;
-    background-attachment: scroll;
-    background-position: center center;
     background-size: cover;
-    background-repeat: repeat;
-    transform: scale(1.2);
+    background-attachment: fixed; /* Arkaplan kaymaz */
+    z-index: -1; /* İçeriklerin arkasında kalmasını sağlar */
 }
 
 @keyframes stars {
@@ -47,9 +45,10 @@
         background-position: 0 0;
     }
     to {
-        background-position: 1500px 1500px;
+        background-position: 100% 100%;
     }
 }
+        
 
 .cursor {
     position: fixed;

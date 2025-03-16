@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <link rel="icon" href="https://raw.githubusercontent.com/Azccriminal/azccriminal.space/main/azccriminal.jpg">
     <style>
-        /* TAM EKRAN ARKA PLAN - PARALLAX YILDIZ ANİMASYONU */
+  /* TAM EKRAN ARKA PLAN - PARALLAX YILDIZ ANİMASYONU */
 .background-stars {
     position: fixed;
     width: 100vw;
@@ -17,9 +17,10 @@
     background: url('https://raw.githubusercontent.com/Azccriminal/azccriminal.space/main/azccriminal-space.jpg') 
                 repeat center center;
     opacity: 0.3;
+    animation: starsMove 60s linear infinite;
+    background-attachment: scroll;
     background-size: cover;
     z-index: -1;
-    animation: starsMove 60s linear infinite;
 }
 
 /* Yıldızlı arka planın hareket etmesi için parallax efekti */
@@ -28,16 +29,10 @@
         background-position: 0 0;
     }
     to {
-        background-position: 2000px 2000px; /* Yıldızların daha geniş kaymasını sağlar */
+        background-position: 2000px 2000px; /* Yatay ve dikey kaydırma */
     }
 }
 
-/* Parallax kaydırma efekti */
-.parallax {
-    background-attachment: fixed;
-}
-
-/* GENEL STİLLER */
 body {
     margin: 0;
     min-height: 100vh;
@@ -53,9 +48,10 @@ body {
     cursor: none;
 }
 
-/* ÖZEL KURSOR */
 .cursor {
     position: fixed;
+    top: 0;
+    left: 0;
     width: 20px;
     height: 20px;
     border: 2px solid #00FFFF;
@@ -72,9 +68,8 @@ body {
     border-color: #FF00FF;
 }
 
-/* NAVBAR */
 .navbar {
-    position: fixed;
+    position: absolute;
     top: 0;
     width: 100%;
     background: rgba(0, 0, 0, 0.7);
@@ -99,7 +94,6 @@ body {
     text-shadow: 0 0 10px rgba(0, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.6);
 }
 
-/* LOGO STİLLERİ */
 .logo {
     font-size: 100px;
     letter-spacing: 5px;
@@ -135,11 +129,14 @@ body {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
-/* İLETİŞİM FORMU */
 .contact-form {
     margin-top: 80px;
     max-width: 900px;
@@ -175,7 +172,11 @@ body {
     background: #FF00FF;
 }
 
-/* BUTON STİLİ */
+.contact-section {
+    margin-top: 30px;
+    font-size: 18px;
+}
+
 .cta-button {
     margin-top: 50px;
     padding: 15px 30px;
@@ -196,6 +197,7 @@ body {
     background: #FF00FF;
     transform: scale(1.1);
 }
+
 
     </style>
 </head>

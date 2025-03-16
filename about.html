@@ -46,7 +46,40 @@
                 background-position: 100% 100%;
             }
         }
+        
+.logo {
+    font-size: 100px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    text-shadow: 0 0 15px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.6), 0 0 45px rgba(0, 255, 255, 0.4);
+    position: relative;
+    animation: logoColorChange 4s ease-in-out infinite, logoZoom 2s ease-in-out infinite;
+    margin-top: 80px;
+}
 
+@keyframes logoColorChange {
+    0% { color: #00FFFF; }
+    50% { color: #FF00FF; }
+    100% { color: #00FFFF; }
+}
+
+@keyframes logoZoom {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.logo::after {
+    content: 'CRIMINAL';
+    display: block;
+    font-size: 40px;
+    letter-spacing: 3px;
+    margin-top: 20px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.4);
+    opacity: 0;
+    animation: fadeIn 2s ease-in-out forwards;
+    animation-delay: 2s;
+}
         /* Özel Siberpunk İmleç */
         .cursor {
             position: fixed;
@@ -182,7 +215,7 @@
     </div>
 
     <!-- Logo Section -->
-    <div class="logo">AZC Criminal</div>
+    <div class="logo">AZC</div>
 
     <!-- About Section -->
     <div class="about-section">

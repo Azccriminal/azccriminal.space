@@ -7,46 +7,51 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <link rel="icon" href="https://raw.githubusercontent.com/Azccriminal/azccriminal.space/main/azccriminal.jpg">
     <style>
-        /* Genel Stil */
-        body {
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            background: radial-gradient(circle, #0A0F1A, #000);
-            font-family: 'Orbitron', sans-serif;
-            color: white;
-            text-align: center;
-            cursor: none;
-            position: relative;
-        }
+/* Genel Stil */
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background: radial-gradient(circle, #0A0F1A, #000);
+    font-family: 'Orbitron', sans-serif;
+    color: white;
+    text-align: center;
+    cursor: none;
+    position: relative;
+}
 
-        /* TAM EKRAN ARKA PLAN */
-        .background-stars {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: url('https://raw.githubusercontent.com/Azccriminal/azccriminal.space/main/azccriminal-space.jpg') no-repeat center center fixed;
-            background-size: cover;
-            opacity: 0.3;
-            animation: stars 60s linear infinite;
-            z-index: -1; /* İçeriğin arkasında kalmasını sağlar */
-        }
+/* TAM EKRAN ARKA PLAN */
+.background-stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: url('https://raw.githubusercontent.com/Azccriminal/azccriminal.space/main/azccriminal-space.jpg') no-repeat center center fixed;
+    background-size: cover;
+    opacity: 0.3;
+    animation: stars 60s linear infinite;
+    background-attachment: scroll;
+    background-position: center;
+    background-repeat: repeat;
+    transform: scale(1.2);
+    z-index: -1;
+}
 
-        @keyframes stars {
-            from {
-                background-position: 0 0;
-            }
-            to {
-                background-position: 100% 100%;
-            }
-        }
-        
+@keyframes stars {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 100% 100%;
+    }
+}
+
+/* LOGO */
 .logo {
     font-size: 100px;
     letter-spacing: 5px;
@@ -80,128 +85,113 @@
     animation: fadeIn 2s ease-in-out forwards;
     animation-delay: 2s;
 }
-        /* Özel Siberpunk İmleç */
-        .cursor {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 20px;
-            height: 20px;
-            border: 2px solid #00FFFF;
-            border-radius: 50%;
-            pointer-events: none;
-            transform: translate(-50%, -50%);
-            transition: transform 0.1s ease, background-color 0.2s ease;
-            z-index: 1000;
-        }
 
-        .cursor.active {
-            transform: translate(-50%, -50%) scale(1.5);
-            background-color: #FF00FF;
-            border-color: #FF00FF;
-        }
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
 
-        /* NAVBAR */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 15px 0;
-            text-align: center;
-            z-index: 10;
-        }
+/* Özel Siberpunk İmleç */
+.cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #00FFFF;
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease, background-color 0.2s ease;
+    z-index: 1000;
+}
 
-        .navbar a {
-            color: white;
-            font-size: 18px;
-            text-decoration: none;
-            margin: 0 20px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-            cursor: none;
-        }
+.cursor.active {
+    transform: translate(-50%, -50%) scale(1.5);
+    background-color: #FF00FF;
+    border-color: #FF00FF;
+}
 
-        .navbar a:hover {
-            color: #00FFFF;
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
-        }
+/* NAVBAR */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 15px 0;
+    text-align: center;
+    z-index: 10;
+}
 
-        /* LOGO ANİMASYONU */
-        .logo {
-            font-size: 100px;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            text-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
-            margin-top: 100px;
-            animation: logoColorChange 4s ease-in-out infinite, logoZoom 2s ease-in-out infinite;
-        }
+.navbar a {
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    margin: 0 20px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    cursor: none;
+}
 
-        @keyframes logoColorChange {
-            0% { color: #00FFFF; }
-            50% { color: #FF00FF; }
-            100% { color: #00FFFF; }
-        }
+.navbar a:hover {
+    color: #00FFFF;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+}
 
-        @keyframes logoZoom {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
+/* ABOUT SECTION */
+.about-section {
+    margin-top: 150px;
+    padding: 30px;
+    max-width: 900px;
+    text-align: left;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
 
-        /* ABOUT SECTION */
-        .about-section {
-            margin-top: 150px;
-            padding: 30px;
-            max-width: 900px;
-            text-align: left;
-            background: rgba(0, 0, 0, 0.5);
-            border-radius: 10px;
-        }
+.about-section h2 {
+    font-size: 35px;
+    margin-bottom: 20px;
+}
 
-        .about-section h2 {
-            font-size: 35px;
-            margin-bottom: 20px;
-        }
+.about-section p,
+.about-section li {
+    font-size: 18px;
+    line-height: 1.5;
+}
 
-        .about-section p, .about-section li {
-            font-size: 18px;
-            line-height: 1.5;
-        }
+.about-section ul {
+    list-style: none;
+    padding: 0;
+}
 
-        .about-section ul {
-            list-style: none;
-            padding: 0;
-        }
+.about-section li {
+    margin-bottom: 10px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 8px;
+}
 
-        .about-section li {
-            margin-bottom: 10px;
-            padding: 10px;
-            background: rgba(0, 0, 0, 0.8);
-            border-radius: 8px;
-        }
+/* BUTON STİLLERİ */
+.cta-button {
+    margin-top: 50px;
+    padding: 15px 30px;
+    background: #00FFFF;
+    color: black;
+    font-size: 20px;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+    transition: background 0.3s ease, transform 0.3s ease;
+}
 
-        /* BUTON STİLLERİ */
-        .cta-button {
-            margin-top: 50px;
-            padding: 15px 30px;
-            background: #00FFFF;
-            color: black;
-            font-size: 20px;
-            text-transform: uppercase;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
-            transition: background 0.3s ease, transform 0.3s ease;
-        }
-
-        .cta-button:hover {
-            background: #FF00FF;
-            transform: scale(1.1);
-        }
-    </style>
+.cta-button:hover {
+    background: #FF00FF;
+    transform: scale(1.1);
+}
+</style>
 </head>
 <body>
     <div class="background-stars"></div>

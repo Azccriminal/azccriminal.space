@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AZC Criminal</title>
+    <title>Azccriminal</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <link rel="icon" href="https://raw.githubusercontent.com/Azccriminal/azccriminal.space/main/azccriminal.jpg">
     <style>
@@ -117,8 +117,7 @@
             }
         }
 
-        /* Parallax effect for background */
-   /* Parallax effect for background */
+/* Parallax effect for background */
 .background-stars {
     position: absolute;
     width: 100%;
@@ -133,11 +132,12 @@
         url('your-image5.jpg') no-repeat center center; /* Fifth background */
     opacity: 0.3;
     animation: stars 60s linear infinite;
-    background-attachment: fixed; /* Keep background fixed */
+    background-attachment: scroll; /* Use scroll instead of fixed to prevent it from moving with the page */
     background-position: center center; /* Keep all the backgrounds centered */
     background-size: cover; /* Ensure all backgrounds cover the full viewport */
     background-repeat: no-repeat; /* Ensure backgrounds are not repeated */
     transform: scale(1.2); /* Optional scaling for parallax effect */
+    overflow: hidden; /* Prevent the background from going outside */
 }
 
 /* Parallax effect animation */
@@ -146,9 +146,10 @@
         background-position: 0 0;
     }
     to {
-        background-position: 1000px 1000px;
+        background-position: 1000px 1000px; /* Limit the amount of parallax effect */
     }
 }
+
 
         /* Button Styles */
         .cta-button {

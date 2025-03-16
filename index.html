@@ -224,6 +224,64 @@
         .close-btn:hover {
             background: #00FFFF;
         }
+/* Mobil Cihazlar için Stil */
+@media screen and (max-width: 768px) {
+
+    body {
+        height: auto; /* Yükseklik otomatik ayarlandı */
+        overflow: auto; /* Dikey kaydırmayı aç */
+        padding: 10px; /* Kenarlarda boşluk ekledik */
+    }
+
+    /* Logo */
+    .logo {
+        font-size: 60px; /* Daha küçük logo */
+        margin-top: 40px; /* Üstteki boşluğu ayarla */
+    }
+
+    .logo::after {
+        font-size: 24px; /* Alt yazı boyutunu küçült */
+    }
+
+    /* Navbar */
+    .navbar {
+        padding: 10px 0; /* Daha az boşluk */
+    }
+
+    .navbar a {
+        font-size: 14px; /* Daha küçük metin */
+        margin: 0 10px; /* Düşük kenar boşluğu */
+    }
+
+    /* Arka Plan */
+    .background-stars {
+        transform: scale(1); /* Mobilde ölçeklendirme azaltıldı */
+        animation: stars 30s linear infinite; /* Daha az kaydırma animasyonu */
+    }
+
+    /* Button Styles */
+    .cta-button {
+        margin-top: 30px; /* Daha az üst boşluğu ayarla */
+        padding: 10px 20px; /* Buton boyutunu küçült */
+        font-size: 16px; /* Daha küçük font */
+    }
+
+    /* Modal Styles */
+    .modal-content {
+        width: 90%; /* Daha geniş modal içeriği */
+        padding: 15px; /* Düşük boşluk */
+    }
+
+    .modal img {
+        width: 100%; /* Görüntüyü mobilde tam genişlikte yap */
+        max-width: none; /* Maksimum genişlik sınırını kaldır */
+    }
+
+    .close-btn {
+        padding: 8px 16px; /* Düşük boşluk */
+        font-size: 16px; /* Buton metnini küçült */
+    }
+}
 
     </style>
 </head>

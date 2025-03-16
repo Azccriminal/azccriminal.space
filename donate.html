@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate - AZC Criminal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://raw.githubusercontent.com/Azccriminal/azccriminal.space/main/azccriminal.jpg">
+    <style>
+        /* TAM EKRAN ARKA PLAN - PARALLAX YILDIZ ANİMASYONU */
+        .background-stars {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            background: url('https://raw.githubusercontent.com/Azccriminal/azccriminal.space/main/azccriminal-space.jpg') 
+                        repeat center center;
+            opacity: 0.3;
+            animation: starsMove 60s linear infinite;
+            background-attachment: scroll;
+            background-size: cover;
+            z-index: -1;
+        }
+
+        /* Yıldızlı arka planın hareket etmesi için parallax efekti */
+        @keyframes starsMove {
+            from {
+                background-position: 0 0;
+            }
+            to {
+                background-position: 2000px 2000px; /* Yatay ve dikey kaydırma */
+            }
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            background: radial-gradient(circle, #0A0F1A, #000);
+            overflow-y: auto;
+            font-family: 'Orbitron', sans-serif;
+            color: white;
+            text-align: center;
+            cursor: none;
+        }
+
+        .cursor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #00FFFF;
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease, background-color 0.2s ease;
+            z-index: 1000;
+        }
+
+        .cursor.active {
+            transform: translate(-50%, -50%) scale(1.5);
+            background-color: #FF00FF;
+            border-color: #FF00FF;
+        }
+
+        .navbar {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px 0;
+            text-align: center;
+            z-index: 10;
+            transition: background 0.3s ease;
+        }
+
+        .navbar a {
+            color: white;
+            font-size: 18px;
+            text-decoration: none;
+            margin: 0 20px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: #00FFFF;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.6);
+        }
+
+        .logo {
+            font-size: 100px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            text-shadow: 0 0 15px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.6), 0 0 45px rgba(0, 255, 255, 0.4);
+            position: relative;
+            animation: logoColorChange 4s ease-in-out infinite, logoZoom 2s ease-in-out infinite;
+            margin-top: 80px;
+        }
+
+        @keyframes logoColorChange {
+            0% { color: #00FFFF; }
+            50% { color: #FF00FF; }
+            100% { color: #00FFFF; }
+        }
+
+        @keyframes logoZoom {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .logo::after {
+            content: 'Donate';
+            display: block;
+            font-size: 40px;
+            letter-spacing: 3px;
+            margin-top: 20px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.4);
+            opacity: 0;
+            animation: fadeIn 2s ease-in-out forwards;
+            animation-delay: 2s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .donate-button {
+            margin-top: 80px;
+            padding: 15px 30px;
+            background: #00FFFF;
+            color: black;
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.6);
+            transition: background 0.3s ease, transform 0.3s ease;
+            z-index: 5;
+        }
+
+        .donate-button:hover {
+            background: #FF00FF;
+            transform: scale(1.1);
+        }
+
+        /* Mobil Cihazlar için Stil */
+        @media screen and (max-width: 768px) {
+            /* Navbar - Daha küçük ve sabit üstte */
+            .navbar {
+                padding: 10px 0;
+                font-size: 14px;
+            }
+
+            .navbar a {
+                font-size: 14px;
+                margin: 0 10px;
+            }
+
+            /* Logo - Daha küçük ve ortalanmış */
+            .logo {
+                font-size: 60px;
+                margin-top: 50px;
+                letter-spacing: 3px;
+            }
+
+            .logo::after {
+                font-size: 20px;
+                margin-top: 10px;
+            }
+
+            /* Donate Button - Daha iyi mobil görünüm */
+            .donate-button {
+                font-size: 16px;
+                padding: 12px 24px;
+            }
+
+            /* Özel İmleç Mobilde Gizlendi */
+            .cursor {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-stars"></div>
+
+    <!-- Navbar Section -->
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+        <a href="donate.html">Donate</a>
+    </div>
+
+    <!-- Logo Section -->
+    <div class="logo">AZC</div>
+
+    <!-- Donate Button Section -->
+    <button class="donate-button" onclick="window.location.href='https://www.paypal.com/donate/?hosted_button_id=NKPHAU3NY3GZU'">Donate Now</button>
+
+    <div class="donate-section">
+        <h3>Thank you for your support!</h3>
+        <p>Your contribution helps us continue our work. If you prefer, you can also donate directly via:</p>
+        <p>PayPal: <a href="https://www.paypal.com/" target="_blank">Your PayPal Link</a></p>
+    </div>
+
+    <!-- Custom Cybernetic Cursor -->
+    <div class="cursor" id="cursor"></div>
+
+    <script>
+        // Get cursor elements
+        const cursor = document.getElementById('cursor');
+
+        // Move cursor with mouse
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = `${e.pageX}px`;
+            cursor.style.top = `${e.pageY}px`;
+        });
+
+        // Add active class on click for cybernetic effect
+        document.addEventListener('mousedown', () => {
+            cursor.classList.add('active');
+        });
+
+        document.addEventListener('mouseup', () => {
+            cursor.classList.remove('active');
+        });
+    </script>
+</body>
+</html>

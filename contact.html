@@ -7,170 +7,197 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <link rel="icon" href="https://raw.githubusercontent.com/Azccriminal/azccriminal.space/main/azccriminal.jpg">
     <style>
-        body {
-            margin: 0;
-            min-height: 100vh; /* Sayfa boyutunu 100vh ile sınırla, altındaki içerikler için kaydırma ekle */
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            background: radial-gradient(circle, #0A0F1A, #000);
-            overflow-y: auto; /* Sayfada kaydırma ekle */
-            font-family: 'Orbitron', sans-serif;
-            color: white;
-            text-align: center;
-            cursor: none;
-        }
+      .background-stars {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: url('https://raw.githubusercontent.com/Azccriminal/azccriminal.space/main/azccriminal-space.jpg')
+                no-repeat center center;
+    opacity: 0.3;
+    animation: stars 60s linear infinite;
+    background-attachment: scroll;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: repeat;
+    transform: scale(1.2);
+}
 
-        .cursor {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 20px;
-            height: 20px;
-            border: 2px solid #00FFFF;
-            border-radius: 50%;
-            pointer-events: none;
-            transform: translate(-50%, -50%);
-            transition: transform 0.1s ease, background-color 0.2s ease;
-            z-index: 1000;
-        }
+@keyframes stars {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 1000px 1000px;
+    }
+}
 
-        .cursor.active {
-            transform: translate(-50%, -50%) scale(1.5);
-            background-color: #FF00FF;
-            border-color: #FF00FF;
-        }
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background: radial-gradient(circle, #0A0F1A, #000);
+    overflow-y: auto;
+    font-family: 'Orbitron', sans-serif;
+    color: white;
+    text-align: center;
+    cursor: none;
+}
 
-        .navbar {
-            position: absolute;
-            top: 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 15px 0;
-            text-align: center;
-            z-index: 10;
-            transition: background 0.3s ease;
-        }
+.cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #00FFFF;
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease, background-color 0.2s ease;
+    z-index: 1000;
+}
 
-        .navbar a {
-            color: white;
-            font-size: 18px;
-            text-decoration: none;
-            margin: 0 20px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-        }
+.cursor.active {
+    transform: translate(-50%, -50%) scale(1.5);
+    background-color: #FF00FF;
+    border-color: #FF00FF;
+}
 
-        .navbar a:hover {
-            color: #00FFFF;
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.6);
-        }
+.navbar {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 15px 0;
+    text-align: center;
+    z-index: 10;
+    transition: background 0.3s ease;
+}
 
-        .logo {
-            font-size: 100px;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            text-shadow: 0 0 15px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.6), 0 0 45px rgba(0, 255, 255, 0.4);
-            position: relative;
-            animation: logoColorChange 4s ease-in-out infinite, logoZoom 2s ease-in-out infinite;
-            margin-top: 80px;
-        }
+.navbar a {
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    margin: 0 20px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
 
-        @keyframes logoColorChange {
-            0% { color: #00FFFF; }
-            50% { color: #FF00FF; }
-            100% { color: #00FFFF; }
-        }
+.navbar a:hover {
+    color: #00FFFF;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.6);
+}
 
-        @keyframes logoZoom {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
+.logo {
+    font-size: 100px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    text-shadow: 0 0 15px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.6), 0 0 45px rgba(0, 255, 255, 0.4);
+    position: relative;
+    animation: logoColorChange 4s ease-in-out infinite, logoZoom 2s ease-in-out infinite;
+    margin-top: 80px;
+}
 
-        .logo::after {
-            content: 'CONTACT';
-            display: block;
-            font-size: 40px;
-            letter-spacing: 3px;
-            margin-top: 20px;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.4);
-            opacity: 0;
-            animation: fadeIn 2s ease-in-out forwards;
-            animation-delay: 2s;
-        }
+@keyframes logoColorChange {
+    0% { color: #00FFFF; }
+    50% { color: #FF00FF; }
+    100% { color: #00FFFF; }
+}
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
+@keyframes logoZoom {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
 
-        .contact-form {
-            margin-top: 80px;
-            max-width: 900px;
-            width: 100%;
-            padding: 30px;
-            text-align: left;
-            background: rgba(0, 0, 0, 0.8);
-            border-radius: 8px;
-        }
+.logo::after {
+    content: 'CONTACT';
+    display: block;
+    font-size: 40px;
+    letter-spacing: 3px;
+    margin-top: 20px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.4);
+    opacity: 0;
+    animation: fadeIn 2s ease-in-out forwards;
+    animation-delay: 2s;
+}
 
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 15px;
-            margin: 10px 0;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            letter-spacing: 1px;
-        }
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
 
-        .contact-form input[type="submit"] {
-            background: #00FFFF;
-            border: none;
-            color: black;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
+.contact-form {
+    margin-top: 80px;
+    max-width: 900px;
+    width: 100%;
+    padding: 30px;
+    text-align: left;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 8px;
+}
 
-        .contact-form input[type="submit"]:hover {
-            background: #FF00FF;
-        }
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
 
-        .contact-section {
-            margin-top: 30px;
-            font-size: 18px;
-        }
+.contact-form input[type="submit"] {
+    background: #00FFFF;
+    border: none;
+    color: black;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
 
-        .cta-button {
-            margin-top: 50px;
-            padding: 15px 30px;
-            background: #00FFFF;
-            color: black;
-            font-size: 20px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.6);
-            transition: background 0.3s ease, transform 0.3s ease;
-            z-index: 5;
-        }
+.contact-form input[type="submit"]:hover {
+    background: #FF00FF;
+}
 
-        .cta-button:hover {
-            background: #FF00FF;
-            transform: scale(1.1);
-        }
+.contact-section {
+    margin-top: 30px;
+    font-size: 18px;
+}
+
+.cta-button {
+    margin-top: 50px;
+    padding: 15px 30px;
+    background: #00FFFF;
+    color: black;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.6);
+    transition: background 0.3s ease, transform 0.3s ease;
+    z-index: 5;
+}
+
+.cta-button:hover {
+    background: #FF00FF;
+    transform: scale(1.1);
+}
+
 
     </style>
 </head>

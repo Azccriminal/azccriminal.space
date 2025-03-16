@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <link rel="icon" href="https://raw.githubusercontent.com/Azccriminal/azccriminal.space/main/azccriminal.jpg">
 <style>
-    body {
+         body {
     margin: 0;
     height: 100%; /* Sayfa içeriği tüm ekranı kaplasın */
     display: flex;
@@ -22,137 +22,146 @@
     overflow-y: scroll; /* Sayfa içeriği kaydırılabilir */
 }
 
-.cursor {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 20px;
-    height: 20px;
-    border: 2px solid #00FFFF;
-    border-radius: 50%;
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-    transition: transform 0.1s ease, background-color 0.2s ease;
-    z-index: 1000;
-}
+        .cursor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #00FFFF;
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease, background-color 0.2s ease;
+            z-index: 1000;
+        }
 
-.cursor.active {
-    transform: translate(-50%, -50%) scale(1.5);
-    background-color: #FF00FF;
-    border-color: #FF00FF;
-}
+        .cursor.active {
+            transform: translate(-50%, -50%) scale(1.5);
+            background-color: #FF00FF;
+            border-color: #FF00FF;
+        }
 
-.navbar {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 15px 0;
-    text-align: center;
-    z-index: 10;
-    transition: background 0.3s ease;
-}
+        .navbar {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px 0;
+            text-align: center;
+            z-index: 10;
+            transition: background 0.3s ease;
+        }
 
-.navbar a {
-    color: white;
-    font-size: 18px;
-    text-decoration: none;
-    margin: 0 20px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
-}
+        .navbar a {
+            color: white;
+            font-size: 18px;
+            text-decoration: none;
+            margin: 0 20px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
 
-.navbar a:hover {
-    color: #00FFFF;
-    text-shadow: 0 0 10px rgba(0, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.6);
-}
+        .navbar a:hover {
+            color: #00FFFF;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.6);
+        }
 
-.logo {
-    font-size: 100px;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    text-shadow: 0 0 15px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.6), 0 0 45px rgba(0, 255, 255, 0.4);
-    position: relative;
-    animation: logoColorChange 4s ease-in-out infinite, logoZoom 2s ease-in-out infinite;
-    margin-top: 80px;
-}
+        .logo {
+            font-size: 100px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            text-shadow: 0 0 15px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.6), 0 0 45px rgba(0, 255, 255, 0.4);
+            position: relative;
+            animation: logoColorChange 4s ease-in-out infinite, logoZoom 2s ease-in-out infinite;
+            margin-top: 80px;
+        }
 
-@keyframes logoColorChange {
-    0% { color: #00FFFF; }
-    50% { color: #FF00FF; }
-    100% { color: #00FFFF; }
-}
+        @keyframes logoColorChange {
+            0% { color: #00FFFF; }
+            50% { color: #FF00FF; }
+            100% { color: #00FFFF; }
+        }
 
-@keyframes logoZoom {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
-}
+        @keyframes logoZoom {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
 
-.logo::after {
-    content: 'CONTACT';
-    display: block;
-    font-size: 40px;
-    letter-spacing: 3px;
-    margin-top: 20px;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.4);
-    opacity: 0;
-    animation: fadeIn 2s ease-in-out forwards;
-    animation-delay: 2s;
-}
+        .logo::after {
+            content: 'CONTACT';
+            display: block;
+            font-size: 40px;
+            letter-spacing: 3px;
+            margin-top: 20px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.4);
+            opacity: 0;
+            animation: fadeIn 2s ease-in-out forwards;
+            animation-delay: 2s;
+        }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
 
-.contact-form {
-    margin-top: 80px;
-    max-width: 900px;
-    width: 100%;
-    padding: 30px;
-    text-align: left;
-    background: rgba(0, 0, 0, 0.8);
-    border-radius: 8px;
-}
+        .contact-form {
+            margin-top: 80px;
+            max-width: 900px;
+            width: 100%;
+            padding: 30px;
+            text-align: left;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 8px;
+        }
 
-.contact-form input,
-.contact-form textarea {
-    width: 100%;
-    padding: 15px;
-    margin: 10px 0;
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    letter-spacing: 1px;
-}
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
 
-.contact-form input[type="submit"] {
-    background: #00FFFF;
-    border: none;
-    color: black;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
+        .contact-form input[type="submit"] {
+            background: #00FFFF;
+            border: none;
+            color: black;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
 
-.contact-form input[type="submit"]:hover {
-    background: #FF00FF;
-}
+        .contact-form input[type="submit"]:hover {
+            background: #FF00FF;
+        }
 
-.contact-section {
-    margin-top: 30px;
-    font-size: 18px;
-}
+        .contact-section {
+            margin-top: 30px;
+            font-size: 18px;
+        }
 
-/* Parallax effect for background */
-.background-stars {
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Parallax effect for background */
+    .background-stars {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -174,27 +183,26 @@
     }
 }
 
-.cta-button {
-    margin-top: 50px;
-    padding: 15px 30px;
-    background: #00FFFF;
-    color: black;
-    font-size: 20px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    box-shadow: 0 0 15px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.6);
-    transition: background 0.3s ease, transform 0.3s ease;
-    z-index: 5;
-}
+        .cta-button {
+            margin-top: 50px;
+            padding: 15px 30px;
+            background: #00FFFF;
+            color: black;
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.6);
+            transition: background 0.3s ease, transform 0.3s ease;
+            z-index: 5;
+        }
 
-.cta-button:hover {
-    background: #FF00FF;
-    transform: scale(1.1);
-}
-
+        .cta-button:hover {
+            background: #FF00FF;
+            transform: scale(1.1);
+        }
 </style>
 
 </head>

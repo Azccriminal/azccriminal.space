@@ -7,7 +7,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <link rel="icon" href="https://raw.githubusercontent.com/Azccriminal/azccriminal.space/main/azccriminal.jpg">
     <style>
-    .background-stars {
+    body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Taşmaları önlemek için */
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background: radial-gradient(circle, #0A0F1A, #000);
+    font-family: 'Orbitron', sans-serif;
+    color: white;
+    text-align: center;
+    cursor: none; /* Custom cursor için */
+}
+
+.background-stars {
     position: absolute;
     top: 0;
     left: 0;
@@ -29,20 +46,7 @@
         background-position: 100% 100%;
     }
 }
-body {
-    margin: 0;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    background: radial-gradient(circle, #0A0F1A, #000);
-    overflow-y: scroll; /* Enable vertical scrolling */
-    font-family: 'Orbitron', sans-serif;
-    color: white;
-    text-align: center;
-    cursor: none; /* Disable the default cursor */
-}
+        
 
 /* Custom Cybernetic Cursor */
 .cursor {

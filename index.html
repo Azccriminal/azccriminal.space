@@ -116,8 +116,7 @@
                 opacity: 1;
             }
         }
-
-/* Parallax effect for background */
+        /* Parallax effect for background */
 .background-stars {
     position: absolute;
     width: 100%;
@@ -132,12 +131,11 @@
         url('your-image5.jpg') no-repeat center center; /* Fifth background */
     opacity: 0.3;
     animation: stars 60s linear infinite;
-    background-attachment: scroll; /* Use scroll instead of fixed to prevent it from moving with the page */
-    background-position: center center; /* Keep all the backgrounds centered */
-    background-size: cover; /* Ensure all backgrounds cover the full viewport */
-    background-repeat: no-repeat; /* Ensure backgrounds are not repeated */
+    background-attachment: scroll; /* Scroll background with the page */
+    background-position: center center; /* Ensure backgrounds stay centered */
+    background-size: cover; /* Make sure backgrounds cover the entire viewport */
+    background-repeat: repeat; /* Make the backgrounds repeat across the entire screen */
     transform: scale(1.2); /* Optional scaling for parallax effect */
-    overflow: hidden; /* Prevent the background from going outside */
 }
 
 /* Parallax effect animation */
@@ -146,10 +144,9 @@
         background-position: 0 0;
     }
     to {
-        background-position: 1000px 1000px; /* Limit the amount of parallax effect */
+        background-position: 1000px 1000px; /* Ensures smooth background animation */
     }
 }
-
 
         /* Button Styles */
         .cta-button {

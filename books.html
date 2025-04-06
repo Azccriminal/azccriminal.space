@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AzcBook - Linktree</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: radial-gradient(circle, #0A0F1A, #000);
+      color: white;
+      text-align: center;
+      cursor: none;
+      overflow-x: hidden;
+    }
+
+    .cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #00FFFF;
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s ease, background-color 0.2s ease;
+      z-index: 999;
+    }
+
+    .cursor.active {
+      transform: translate(-50%, -50%) scale(1.5);
+      background-color: #FF00FF;
+      border-color: #FF00FF;
+    }
+
+    .background-stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: url('https://raw.githubusercontent.com/Azccriminal/azccriminal.space/main/azccriminal-space.jpg') no-repeat center center;
+      background-size: cover;
+      background-attachment: fixed;
+      opacity: 0.15;
+      animation: stars 60s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes stars {
+      from { background-position: 0 0; }
+      to { background-position: 1000px 1000px; }
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 100px auto;
+      padding: 20px;
+      position: relative;
+    }
+
+    .book-cover {
+      width: 200px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #00FFFF;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 36px;
+      text-shadow: 0 0 10px #00FFFF;
+      margin-bottom: 40px;
+    }
+
+    .link-btn {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      margin: 10px 0;
+      background: #00FFFF;
+      color: black;
+      text-transform: uppercase;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px #00FFFF;
+    }
+
+    .link-btn:hover {
+      background: #FF00FF;
+      color: black;
+      box-shadow: 0 0 25px #FF00FF;
+      transform: scale(1.05);
+    }
+
+    .language-selector {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: #111;
+      color: white;
+      border: 2px solid #00FFFF;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 28px;
+      }
+
+      .book-cover {
+        width: 150px;
+      }
+
+      .link-btn {
+        font-size: 14px;
+        padding: 12px;
+      }
+
+      .language-selector {
+        top: 10px;
+        right: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="background-stars"></div>
+
+  <div class="container">
+    <select class="language-selector" onchange="changeLanguage(this.value)">
+      <option value="tr">🇹🇷 Türkçe</option>
+      <option value="en" selected>🇬🇧 English</option>
+      <option value="es">🇪🇸 Español</option>
+    </select>
+
+    <img src="https://cdn.vivlio.com/product/v1/d99677d8-5980-436a-87fd-36ebc9fb0126/front-cover?tag=AQBdCB9Wx9%2BFLOHHNuemqyFXRVNmeFRhSi8%3D&size=450x675" alt="Book Cover" class="book-cover" />
+
+    <h1 id="book-title">Espada Verdadera: The Valley of Wolves</h1>
+
+    <div id="links">
+      <!-- Links will be injected here -->
+    </div>
+  </div>
+
+  <div class="cursor" id="cursor"></div>
+
+  <script>
+    const cursor = document.getElementById('cursor');
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = `${e.pageX}px`;
+      cursor.style.top = `${e.pageY}px`;
+    });
+    document.addEventListener('mousedown', () => cursor.classList.add('active'));
+    document.addEventListener('mouseup', () => cursor.classList.remove('active'));
+
+    const translations = {
+      tr: {
+        title: "Kurtlar Vadisi Espada Verdadera",
+        links: [
+          { text: "Amazon Türkiye", url: "https://amazon.com.tr/espada" },
+          { text: "Google Kitaplar", url: "https://books.google.com.tr" },
+          { text: "Wattpad Türkiye", url: "https://www.wattpad.com/tr" }
+        ]
+      },
+      en: {
+        title: "The Valley of Wolves Espada Verdadera",
+        links: [
+          { text: "View on Amazon", url: "https://amazon.com/espada" },
+          { text: "Google Books", url: "https://books.google.com" },
+          { text: "Read on Wattpad", url: "https://www.wattpad.com" },
+          { text: "Buy on Barnes & Noble", url: "https://barnesandnoble.com/espada" }
+        ]
+      },
+      es: {
+        title: "El Valle de los Lobos Espada Verdadera",
+        links: [
+          { text: "Ver en Amazon España", url: "https://amazon.es/espada" },
+          { text: "Google Libros", url: "https://books.google.es" },
+          { text: "Leer en Wattpad", url: "https://www.wattpad.com/es" }
+        ]
+      }
+    };
+
+    function changeLanguage(lang) {
+      document.getElementById("book-title").innerText = translations[lang].title;
+      const linksContainer = document.getElementById("links");
+      linksContainer.innerHTML = ""; // Clear previous links
+
+      translations[lang].links.forEach(link => {
+        const a = document.createElement("a");
+        a.className = "link-btn";
+        a.href = link.url;
+        a.target = "_blank";
+        a.innerText = link.text;
+        linksContainer.appendChild(a);
+      });
+    }
+
+    // Load default language (English)
+    changeLanguage("en");
+  </script>
+</body>
+</html>

@@ -44,42 +44,7 @@
       height: 100%;
       top: 0;
       left: 0;
-      background: url('https://raw.githubusercontent.com/Azccriminal/azccriminal.space      padding: 0;
-      font-family: 'Orbitron', sans-serif;
-      background: radial-gradient(circle, #0A0F1A, #000);
-      color: white;
-      text-align: center;
-      cursor: none;
-      overflow-x: hidden;
-    }
-
-    .cursor {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 20px;
-      height: 20px;
-      border: 2px solid #00FFFF;
-      border-radius: 50%;
-      pointer-events: none;
-      transform: translate(-50%, -50%);
-      transition: transform 0.1s ease, background-color 0.2s ease;
-      z-index: 999;
-    }
-
-    .cursor.active {
-      transform: translate(-50%, -50%) scale(1.5);
-      background-color: #FF00FF;
-      border-color: #FF00FF;
-    }
-
-    .background-stars {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-/main/azccriminal-space.jpg') 
+      background: url('https://raw.githubusercontent.com/Azccriminal/azccriminal.space/main/azccriminal-space.jpg') 
                   no-repeat center center;
       opacity: 0.3;
       animation: stars 60s linear infinite;
@@ -202,7 +167,6 @@
       <option value="es">🇪🇸 Español</option>
     </select>
 
-
     <select class="book-selector" onchange="updateContent()">
       <option value="espada" selected>Espada Verdadera</option>
       <option value="LDPS_I">LDPS I</option>
@@ -278,39 +242,35 @@
         }
       }
     };
-function updateContent() {
-  const lang = document.querySelector('.language-selector').value;
-  const bookKey = document.querySelector('.book-selector').value;
-  const book = books[bookKey];
 
-  // Check if the selected book has the required language
-  if (!book.translations[lang]) {
-    // If no translation exists for the selected language, clear the content and display a fallback message
-    document.getElementById('book-cover').src = "";
-    document.getElementById('book-title').innerText = "Sorry, this book is not available in this language.";
-    document.getElementById('links').innerHTML = "";
-    return; // Prevent further execution
-  }
+    function updateContent() {
+      const lang = document.querySelector('.language-selector').value;
+      const bookKey = document.querySelector('.book-selector').value;
+      const book = books[bookKey];
 
-  // Proceed with rendering the content if the language exists
-  document.getElementById('book-cover').src = book.cover;
-  document.getElementById('book-title').innerText = book.translations[lang].title;
+      if (!book.translations[lang]) {
+        document.getElementById('book-cover').src = "";
+        document.getElementById('book-title').innerText = "Sorry, this book is not available in this language.";
+        document.getElementById('links').innerHTML = "";
+        return;
+      }
 
-  const linksContainer = document.getElementById('links');
-  linksContainer.innerHTML = "";
-  book.translations[lang].links.forEach(link => {
-    const a = document.createElement('a');
-    a.className = "link-btn";
-    a.href = link.url;
-    a.target = "_blank";
-    a.innerText = link.text;
-    linksContainer.appendChild(a);
-  });
-}
+      document.getElementById('book-cover').src = book.cover;
+      document.getElementById('book-title').innerText = book.translations[lang].title;
 
+      const linksContainer = document.getElementById('links');
+      linksContainer.innerHTML = "";
+      book.translations[lang].links.forEach(link => {
+        const a = document.createElement('a');
+        a.className = "link-btn";
+        a.href = link.url;
+        a.target = "_blank";
+        a.innerText = link.text;
+        linksContainer.appendChild(a);
+      });
+    }
 
-  // İlk içerik yükleme
-  updateContent();
+    updateContent();
   </script>
 </body>
 </html>

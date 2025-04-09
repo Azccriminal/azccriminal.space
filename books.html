@@ -263,24 +263,23 @@
         document.getElementById('book-title').innerText = "";
         document.getElementById('links').innerHTML = "";
         document.getElementById('unavailable-message').style.display = "block";
-        return;
+      } else {
+        document.getElementById('book-cover').src = book.cover;
+        document.getElementById('book-title').innerText = book.translations[lang].title;
+
+        const linksContainer = document.getElementById('links');
+        linksContainer.innerHTML = "";
+        book.translations[lang].links.forEach(link => {
+          const a = document.createElement('a');
+          a.className = "link-btn";
+          a.href = link.url;
+          a.target = "_blank";
+          a.innerText = link.text;
+          linksContainer.appendChild(a);
+        });
+
+        document.getElementById('unavailable-message').style.display = "none";
       }
-
-      document.getElementById('book-cover').src = book.cover;
-      document.getElementById('book-title').innerText = book.translations[lang].title;
-
-      const linksContainer = document.getElementById('links');
-      linksContainer.innerHTML = "";
-      book.translations[lang].links.forEach(link => {
-        const a = document.createElement('a');
-        a.className = "link-btn";
-        a.href = link.url;
-        a.target = "_blank";
-        a.innerText = link.text;
-        linksContainer.appendChild(a);
-      });
-      document.getElementById('book-cover').style.display = book.cover;
-      document.getElementById('unavailable-message').style.display = "none";
     }
 
     updateContent();

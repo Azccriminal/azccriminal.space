@@ -38,32 +38,31 @@
       border-color: #FF00FF;
     }
 
- .background-stars {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background: url('https://raw.githubusercontent.com/Azccriminal/azccriminal.space/main/azccriminal-space.jpg') 
-                no-repeat center center;
-    opacity: 0.3;
-    animation: stars 60s linear infinite;
-    background-attachment: scroll; /* Scroll background with the page */
-    background-position: center center; /* Ensure backgrounds stay centered */
-    background-size: cover; /* Make sure backgrounds cover the entire viewport */
-    background-repeat: repeat; /* Make the backgrounds repeat across the entire screen */
-    transform: scale(1.2); /* Optional scaling for parallax effect */
-}
+    .background-stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: url('https://raw.githubusercontent.com/Azccriminal/azccriminal.space/main/azccriminal-space.jpg') 
+                  no-repeat center center;
+      opacity: 0.3;
+      animation: stars 60s linear infinite;
+      background-attachment: scroll;
+      background-position: center center;
+      background-size: cover;
+      background-repeat: repeat;
+      transform: scale(1.2);
+    }
 
-/* Parallax effect animation */
-@keyframes stars {
-    from {
+    @keyframes stars {
+      from {
         background-position: 0 0;
+      }
+      to {
+        background-position: 1000px 1000px;
+      }
     }
-    to {
-        background-position: 1000px 1000px; /* Ensures smooth background animation */
-    }
-}
 
     .container {
       max-width: 600px;
@@ -109,16 +108,23 @@
       transform: scale(1.05);
     }
 
-    .language-selector {
+    .language-selector, .book-selector {
       position: absolute;
       top: 20px;
-      right: 20px;
       background: #111;
       color: white;
       border: 2px solid #00FFFF;
       padding: 5px 10px;
       border-radius: 5px;
       font-weight: bold;
+    }
+
+    .language-selector {
+      right: 20px;
+    }
+
+    .book-selector {
+      left: 20px;
     }
 
     @media (max-width: 600px) {
@@ -135,9 +141,18 @@
         padding: 12px;
       }
 
-      .language-selector {
+      .language-selector, .book-selector {
         top: 10px;
+        font-size: 12px;
+        padding: 4px 8px;
+      }
+
+      .language-selector {
         right: 10px;
+      }
+
+      .book-selector {
+        left: 10px;
       }
     }
   </style>
@@ -146,19 +161,20 @@
   <div class="background-stars"></div>
 
   <div class="container">
-    <select class="language-selector" onchange="changeLanguage(this.value)">
+    <select class="language-selector" onchange="updateContent()">
       <option value="tr">🇹🇷 Türkçe</option>
       <option value="en" selected>🇬🇧 English</option>
       <option value="es">🇪🇸 Español</option>
     </select>
 
-    <img src="https://cdn.vivlio.com/product/v1/d99677d8-5980-436a-87fd-36ebc9fb0126/front-cover?tag=AQBdCB9Wx9%2BFLOHHNuemqyFXRVNmeFRhSi8%3D&size=450x675" alt="Book Cover" class="book-cover" />
+    <select class="book-selector" onchange="updateContent()">
+      <option value="espada" selected>Espada Verdadera</option>
+      <option value="LDPS I">LDPS I</option>
+    </select>
 
-    <h1 id="book-title">Espada Verdadera: The Valley of Wolves</h1>
-
-    <div id="links">
-     
-    </div>
+    <img id="book-cover" src="" alt="Book Cover" class="book-cover" />
+    <h1 id="book-title"></h1>
+    <div id="links"></div>
   </div>
 
   <div class="cursor" id="cursor"></div>
@@ -172,44 +188,71 @@
     document.addEventListener('mousedown', () => cursor.classList.add('active'));
     document.addEventListener('mouseup', () => cursor.classList.remove('active'));
 
-    const translations = {
-      tr: {
-        title: "Kurtlar Vadisi Espada Verdadera",
-        links: [
-          { text: "Apple", url: "https://books.apple.com/us/book/kurtlar-vadisi-espada-verdadera-t%C3%BCrk%C3%A7e/id6744296803"},
-          { text: "SmashWord", url: "https://www.smashwords.com/books/view/1743037" },
-          { text: "Fable", url: "https://fable.co/book/x-9798230986416" },
-          { text: "Vivlio" , url: "https://shop.vivlio.com/product/9798230986416_9798230986416_10020/kurtlar-vadisi-espada-verdadera-turkce" }
-        ]
+    const books = {
+      espada: {
+        cover: "https://cdn.vivlio.com/product/v1/d99677d8-5980-436a-87fd-36ebc9fb0126/front-cover?tag=AQBdCB9Wx9%2BFLOHHNuemqyFXRVNmeFRhSi8%3D&size=450x675",
+        translations: {
+          tr: {
+            title: "Kurtlar Vadisi Espada Verdadera",
+            links: [
+              { text: "Apple", url: "https://books.apple.com/us/book/kurtlar-vadisi-espada-verdadera-t%C3%BCrk%C3%A7e/id6744296803" },
+              { text: "SmashWord", url: "https://www.smashwords.com/books/view/1743037" },
+              { text: "Fable", url: "https://fable.co/book/x-9798230986416" },
+              { text: "Vivlio", url: "https://shop.vivlio.com/product/9798230986416_9798230986416_10020/kurtlar-vadisi-espada-verdadera-turkce" }
+            ]
+          },
+          en: {
+            title: "The Valley of Wolves Espada Verdadera",
+            links: [
+              { text: "Apple", url: "https://books.apple.com/us/book/kurtlar-vadisi-espada-verdadera/id6744280845" },
+              { text: "SmashWord", url: "https://www.smashwords.com/books/view/1742796" },
+              { text: "Fable", url: "https://fable.co/book/x-9798230767596" },
+              { text: "Vivlio", url: "https://shop.vivlio.com/product/9798230767596_9798230767596_10020/kurtlar-vadisi-espada-verdadera" },
+              { text: "Palace Marketplace", url: "https://market.thepalaceproject.org/item/6568303" }
+            ]
+          },
+          es: {
+            title: "El Valle de los Lobos Espada Verdadera",
+            links: [
+              { text: "Apple", url: "https://books.apple.com/us/book/kurtlar-vadisi-espada-verdadera-espa%C3%B1ol/id6744296977" },
+              { text: "SmashWord", url: "https://www.smashwords.com/books/view/1743029" },
+              { text: "Fable", url: "https://fable.co/book/x-9798230790402" },
+              { text: "Vivlio", url: "https://shop.vivlio.com/product/9798230790402_9798230790402_10020/kurtlar-vadisi-espada-verdaderaespanol" }
+            ]
+          }
+        }
       },
-      en: {
-        title: "The Valley of Wolves Espada Verdadera",
-        links: [
-          { text: "Apple", url: "https://books.apple.com/us/book/kurtlar-vadisi-espada-verdadera/id6744280845" },
-          { text: "SmashWord", url: "https://www.smashwords.com/books/view/1742796" },
-          { text: "Fable", url: "https://fable.co/book/x-9798230767596" },
-          { text: "Vivlio", url: "https://shop.vivlio.com/product/9798230767596_9798230767596_10020/kurtlar-vadisi-espada-verdadera" },
-          { text: "Palace Marketplace" , url: "https://market.thepalaceproject.org/item/6568303" }
-        ]
-      },
-      es: {
-        title: "El Valle de los Lobos Espada Verdadera",
-        links: [
-           { text: "Apple", url: "https://books.apple.com/us/book/kurtlar-vadisi-espada-verdadera-espa%C3%B1ol/id6744296977" },
-           { text: "SmashWord", url: "https://www.smashwords.com/books/view/1743029" },
-           { text:"Fable", url: "https://fable.co/book/x-9798230790402" },
-           { text: "Vivlio" , url: "https://shop.vivlio.com/product/9798230790402_9798230790402_10020/kurtlar-vadisi-espada-verdaderaespanol" }
-        ]
-      }
-    };
+      shadow: {
+        cover: "https://via.placeholder.com/300x450?text=Shadow+Book",
+        translations: {
+          tr: {
+            title: "LDPS I",
+            links: [
+              { text: "SmashWord", url: "https://www.smashwords.com/books/view/1745039" },
+              { text: "Link 2", url: "#" }
+            ]
+          },
+          en: {
+            title: "LDPS I",
+            links: [
+              { text: "SmashWord", url: "https://www.smashwords.com/books/view/1744755" },
+              { text: "Link 2", url: "#" }
+            ]
+          },
+        }
 
-    function changeLanguage(lang) {
-      document.getElementById("book-title").innerText = translations[lang].title;
-      const linksContainer = document.getElementById("links");
-      linksContainer.innerHTML = ""; // Clear previous links
+    function updateContent() {
+      const lang = document.querySelector('.language-selector').value;
+      const bookKey = document.querySelector('.book-selector').value;
+      const book = books[bookKey];
 
-      translations[lang].links.forEach(link => {
-        const a = document.createElement("a");
+      document.getElementById('book-cover').src = book.cover;
+      document.getElementById('book-title').innerText = book.translations[lang].title;
+
+      const linksContainer = document.getElementById('links');
+      linksContainer.innerHTML = "";
+      book.translations[lang].links.forEach(link => {
+        const a = document.createElement('a');
         a.className = "link-btn";
         a.href = link.url;
         a.target = "_blank";
@@ -218,8 +261,8 @@
       });
     }
 
-    // Load default language (English)
-    changeLanguage("en");
+    // Initial content load
+    updateContent();
   </script>
 </body>
 </html>

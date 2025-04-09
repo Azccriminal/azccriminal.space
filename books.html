@@ -199,7 +199,9 @@
     <select class="language-selector" onchange="updateContent()">
       <option value="tr">🇹🇷 Türkçe</option>
       <option value="en" selected>🇬🇧 English</option>
+      <option value="es">🇪🇸 Español</option>
     </select>
+
 
     <select class="book-selector" onchange="updateContent()">
       <option value="espada" selected>Espada Verdadera</option>
@@ -277,45 +279,38 @@
       }
     };
 function updateContent() {
-      const lang = document.querySelector('.language-selector').value;
-      const bookKey = document.querySelector('.book-selector').value;
-      const book = books[bookKey];
+  const lang = document.querySelector('.language-selector').value;
+  const bookKey = document.querySelector('.book-selector').value;
+  const book = books[bookKey];
 
-      // Set book cover
-      document.getElementById('book-cover').src = book.cover;
-      
-      // Update book title
-      document.getElementById('book-title').innerText = book.translations[lang].title;
+  // Check if the selected book has the required language
+  if (!book.translations[lang]) {
+    // If no translation exists for the selected language, clear the content and display a fallback message
+    document.getElementById('book-cover').src = "";
+    document.getElementById('book-title').innerText = "Sorry, this book is not available in this language.";
+    document.getElementById('links').innerHTML = "";
+    return; // Prevent further execution
+  }
 
-      // Update links
-      const linksContainer = document.getElementById('links');
-      linksContainer.innerHTML = "";
-      book.translations[lang].links.forEach(link => {
-        const a = document.createElement('a');
-        a.className = "link-btn";
-        a.href = link.url;
-        a.target = "_blank";
-        a.innerText = link.text;
-        linksContainer.appendChild(a);
-      });
+  // Proceed with rendering the content if the language exists
+  document.getElementById('book-cover').src = book.cover;
+  document.getElementById('book-title').innerText = book.translations[lang].title;
 
-      // Update language selector dynamically (only if the language exists for the selected book)
-      const languageSelector = document.querySelector('.language-selector');
-      const options = ['tr', 'en', 'es'];
+  const linksContainer = document.getElementById('links');
+  linksContainer.innerHTML = "";
+  book.translations[lang].links.forEach(link => {
+    const a = document.createElement('a');
+    a.className = "link-btn";
+    a.href = link.url;
+    a.target = "_blank";
+    a.innerText = link.text;
+    linksContainer.appendChild(a);
+  });
+}
 
-      options.forEach(option => {
-        const optionElement = document.querySelector(`.language-selector option[value="${option}"]`);
-        if (book.translations[option]) {
-          optionElement.style.display = 'block';
-        } else {
-          optionElement.style.display = 'none';
-        }
-      });
-    }
 
-    window.onload = updateContent;
-</script>
-    
+  // İlk içerik yükleme
+  updateContent();
   </script>
 </body>
 </html>

@@ -260,7 +260,7 @@
 
       if (!book.translations[lang]) {
         document.getElementById('book-cover').src = book.cover;
-        document.getElementById('book-title').innerText = "";
+        document.getElementById('book-title').innerText = book.title;
         document.getElementById('links').innerHTML = "";
         document.getElementById('unavailable-message').style.display = "block";
       } else {

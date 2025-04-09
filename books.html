@@ -164,7 +164,6 @@
     <select class="language-selector" onchange="updateContent()">
       <option value="tr">🇹🇷 Türkçe</option>
       <option value="en" selected>🇬🇧 English</option>
-      <option value="es">🇪🇸 Español</option>
     </select>
 
     <select class="book-selector" onchange="updateContent()">
@@ -243,7 +242,7 @@
       }
     };
 
-    function updateContent() {
+  function updateContent() {
       const lang = document.querySelector('.language-selector').value;
       const bookKey = document.querySelector('.book-selector').value;
       const book = books[bookKey];
@@ -253,6 +252,16 @@
 
       const linksContainer = document.getElementById('links');
       linksContainer.innerHTML = "";
+
+      const languageSelector = document.querySelector('.language-selector');
+      if (book.translations.es) {
+  
+        const option = document.createElement('option');
+        option.value = "es";
+        option.innerText = "🇪🇸 Español";
+        languageSelector.appendChild(option);
+      }
+
       book.translations[lang].links.forEach(link => {
         const a = document.createElement('a');
         a.className = "link-btn";
@@ -263,7 +272,7 @@
       });
     }
 
-    // Initial content load
+
     updateContent();
   </script>
 </body>

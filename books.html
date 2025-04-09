@@ -44,7 +44,42 @@
       height: 100%;
       top: 0;
       left: 0;
-      background: url('https://raw.githubusercontent.com/Azccriminal/azccriminal.space/main/azccriminal-space.jpg') 
+      background: url('https://raw.githubusercontent.com/Azccriminal/azccriminal.space      padding: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: radial-gradient(circle, #0A0F1A, #000);
+      color: white;
+      text-align: center;
+      cursor: none;
+      overflow-x: hidden;
+    }
+
+    .cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #00FFFF;
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s ease, background-color 0.2s ease;
+      z-index: 999;
+    }
+
+    .cursor.active {
+      transform: translate(-50%, -50%) scale(1.5);
+      background-color: #FF00FF;
+      border-color: #FF00FF;
+    }
+
+    .background-stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+/main/azccriminal-space.jpg') 
                   no-repeat center center;
       opacity: 0.3;
       animation: stars 60s linear infinite;
@@ -241,27 +276,20 @@
         }
       }
     };
-
-  function updateContent() {
+function updateContent() {
       const lang = document.querySelector('.language-selector').value;
       const bookKey = document.querySelector('.book-selector').value;
       const book = books[bookKey];
 
+      // Set book cover
       document.getElementById('book-cover').src = book.cover;
+      
+      // Update book title
       document.getElementById('book-title').innerText = book.translations[lang].title;
 
+      // Update links
       const linksContainer = document.getElementById('links');
       linksContainer.innerHTML = "";
-
-      const languageSelector = document.querySelector('.language-selector');
-      if (book.translations.es) {
-  
-        const option = document.createElement('option');
-        option.value = "es";
-        option.innerText = "🇪🇸 Español";
-        languageSelector.appendChild(option);
-      }
-
       book.translations[lang].links.forEach(link => {
         const a = document.createElement('a');
         a.className = "link-btn";
@@ -270,10 +298,23 @@
         a.innerText = link.text;
         linksContainer.appendChild(a);
       });
+
+      // Update language selector dynamically (only if the language exists for the selected book)
+      const languageSelector = document.querySelector('.language-selector');
+      const options = ['tr', 'en', 'es'];
+
+      options.forEach(option => {
+        const optionElement = document.querySelector(`.language-selector option[value="${option}"]`);
+        if (book.translations[option]) {
+          optionElement.style.display = 'block';
+        } else {
+          optionElement.style.display = 'none';
+        }
+      });
     }
 
-
-    updateContent();
+    window.onload = updateContent;
+    
   </script>
 </body>
 </html>

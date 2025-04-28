@@ -9,270 +9,268 @@
     <link rel="alternate" type="application/rss+xml" title="AZC Criminal RSS Feed" href="https://azccriminal.space/services.xml" />
 </head>
 
-    <style>
-        /* Disable default cursor and set custom cursor */
-       body {
-    margin: 0;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    background: radial-gradient(circle, #0A0F1A, #000);
-    font-family: 'Orbitron', sans-serif;
-    color: white;
-    text-align: center;
-    cursor: none;
-    overflow-y: auto;
-}
-.social-icon {
-    width: 100px; /* Genişlik 100px */
-    height: 100px; /* Yükseklik 100px */
-}
-
-/* TAM EKRAN ARKA PLAN - PARALLAX YILDIZ ANİMASYONU */
-.background-stars {
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    background: url('https://raw.githubusercontent.com/Azccriminal/azccriminal.space/main/azccriminal-space.jpg') 
-                repeat center center;
-    opacity: 0.3;
-    animation: starsMove 60s linear infinite;
-    background-attachment: scroll;
-    background-size: cover;
-    z-index: -1;
-}
-
-/* Yıldızlı arka planın hareket etmesi için parallax efekti */
-@keyframes starsMove {
-    from {
-        background-position: 0 0;
+<style>
+    /* Disable default cursor and set custom cursor */
+    body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        background: radial-gradient(circle, #0A0F1A, #000);
+        font-family: 'Orbitron', sans-serif;
+        color: white;
+        text-align: center;
+        cursor: none;
+        overflow-y: auto;
     }
-    to {
-        background-position: 2000px 2000px; /* Yatay ve dikey kaydırma */
+    .social-icon {
+        width: 100px; /* Genişlik 100px */
+        height: 100px; /* Yükseklik 100px */
     }
-}
 
-.cursor {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 20px;
-    height: 20px;
-    border: 2px solid #00FFFF;
-    border-radius: 50%;
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-    transition: transform 0.1s ease, background-color 0.2s ease;
-    z-index: 1000;
-}
+    /* TAM EKRAN ARKA PLAN - PARALLAX YILDIZ ANİMASYONU */
+    .background-stars {
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        background: url('https://raw.githubusercontent.com/Azccriminal/azccriminal.space/main/azccriminal-space.jpg') 
+                    repeat center center;
+        opacity: 0.3;
+        animation: starsMove 60s linear infinite;
+        background-attachment: scroll;
+        background-size: cover;
+        z-index: -1;
+    }
 
-.cursor.active {
-    transform: translate(-50%, -50%) scale(1.5);
-    background-color: #FF00FF;
-    border-color: #FF00FF;
-}
-
-.navbar {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 15px 0;
-    text-align: center;
-    z-index: 10;
-    transition: background 0.3s ease;
-}
-
-.navbar a {
-    color: white;
-    font-size: 18px;
-    text-decoration: none;
-    margin: 0 20px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
-    position: relative;
-    cursor: none;
-}
-
-.navbar a:hover {
-    color: #00FFFF;
-    text-shadow: 0 0 10px rgba(0, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.6);
-}
-
-.logo {
-    font-size: 100px;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    text-shadow: 0 0 15px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.6), 0 0 45px rgba(0, 255, 255, 0.4);
-    position: relative;
-    animation: logoColorChange 4s ease-in-out infinite, logoZoom 2s ease-in-out infinite;
-    margin-top: 80px;
-}
-
-@keyframes logoColorChange {
-    0% { color: #00FFFF; }
-    50% { color: #FF00FF; }
-    100% { color: #00FFFF; }
-}
-
-@keyframes logoZoom {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
-}
-
-.logo::after {
-    content: 'CRIMINAL';
-    display: block;
-    font-size: 40px;
-    letter-spacing: 3px;
-    margin-top: 20px;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.4);
-    opacity: 0;
-    animation: fadeIn 2s ease-in-out forwards;
-    animation-delay: 2s;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-
-.services-section {
-    margin-top: 100px;
-    padding: 30px;
-    max-width: 900px;
-    text-align: left;
-}
-
-.services-section h2 {
-    font-size: 35px;
-    margin-bottom: 20px;
-}
-
-.service-item {
-    background: rgba(0, 0, 0, 0.8);
-    padding: 20px;
-    margin: 15px 0;
-    border-radius: 8px;
-    transition: background 0.3s ease;
-}
-
-.service-item:hover {
-    background: #00FFFF;
-    cursor: pointer;
-}
-
-.service-item h3 {
-    font-size: 28px;
-    margin-bottom: 10px;
-}
-
-.service-item p {
-    font-size: 18px;
-}
-
-.cta-button {
-    margin-top: 50px;
-    padding: 15px 30px;
-    background: #00FFFF;
-    color: black;
-    font-size: 20px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    box-shadow: 0 0 15px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.6);
-    transition: background 0.3s ease, transform 0.3s ease;
-    z-index: 5;
-}
-
-.cta-button:hover {
-    background: #FF00FF;
-    transform: scale(1.1);
-}
-/* Mobil Cihazlar için Stil */
-@media screen and (max-width: 768px) {
-
-    /* Arka Plan - Daha yavaş kayma efekti */
+    /* Yıldızlı arka planın hareket etmesi için parallax efekti */
     @keyframes starsMove {
         from {
             background-position: 0 0;
         }
         to {
-            background-position: 1000px 1000px; /* Daha az kaydırma hareketi */
+            background-position: 2000px 2000px; /* Yatay ve dikey kaydırma */
         }
     }
 
-    /* Navbar - Daha küçük ve kompakt */
+    .cursor {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 20px;
+        height: 20px;
+        border: 2px solid #00FFFF;
+        border-radius: 50%;
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+        transition: transform 0.1s ease, background-color 0.2s ease;
+        z-index: 1000;
+    }
+
+    .cursor.active {
+        transform: translate(-50%, -50%) scale(1.5);
+        background-color: #FF00FF;
+        border-color: #FF00FF;
+    }
+
     .navbar {
-        padding: 10px 0;
-        font-size: 14px;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 15px 0;
+        text-align: center;
+        z-index: 10;
+        transition: background 0.3s ease;
     }
 
     .navbar a {
-        font-size: 14px;
-        margin: 0 10px;
+        color: white;
+        font-size: 18px;
+        text-decoration: none;
+        margin: 0 20px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+        position: relative;
+        cursor: none;
     }
 
-    /* Logo - Küçültüldü ve hizalandı */
+    .navbar a:hover {
+        color: #00FFFF;
+        text-shadow: 0 0 10px rgba(0, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.6);
+    }
+
     .logo {
-        font-size: 60px;
-        margin-top: 50px;
-        letter-spacing: 3px;
+        font-size: 100px;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        text-shadow: 0 0 15px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.6), 0 0 45px rgba(0, 255, 255, 0.4);
+        position: relative;
+        animation: logoColorChange 4s ease-in-out infinite, logoZoom 2s ease-in-out infinite;
+        margin-top: 80px;
+    }
+
+    @keyframes logoColorChange {
+        0% { color: #00FFFF; }
+        50% { color: #FF00FF; }
+        100% { color: #00FFFF; }
+    }
+
+    @keyframes logoZoom {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
     }
 
     .logo::after {
-        font-size: 20px;
-        margin-top: 10px;
+        content: 'CRIMINAL';
+        display: block;
+        font-size: 40px;
+        letter-spacing: 3px;
+        margin-top: 20px;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.4);
+        opacity: 0;
+        animation: fadeIn 2s ease-in-out forwards;
+        animation-delay: 2s;
     }
 
-    /* Hizmetler Bölümü */
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
     .services-section {
-        margin-top: 50px;
-        padding: 20px;
-        width: 90%;
-        text-align: center;
+        margin-top: 100px;
+        padding: 30px;
+        max-width: 900px;
+        text-align: left;
     }
 
     .services-section h2 {
-        font-size: 28px;
+        font-size: 35px;
+        margin-bottom: 20px;
     }
 
     .service-item {
-        padding: 15px;
-        margin: 10px 0;
+        background: rgba(0, 0, 0, 0.8);
+        padding: 20px;
+        margin: 15px 0;
+        border-radius: 8px;
+        transition: background 0.3s ease;
+    }
+
+    .service-item:hover {
+        background: #00FFFF;
+        cursor: pointer;
     }
 
     .service-item h3 {
-        font-size: 22px;
+        font-size: 28px;
+        margin-bottom: 10px;
     }
 
     .service-item p {
-        font-size: 16px;
+        font-size: 18px;
     }
 
-    /* CTA Butonu */
     .cta-button {
-        font-size: 16px;
-        padding: 12px 24px;
+        margin-top: 50px;
+        padding: 15px 30px;
+        background: #00FFFF;
+        color: black;
+        font-size: 20px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        box-shadow: 0 0 15px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.6);
+        transition: background 0.3s ease, transform 0.3s ease;
+        z-index: 5;
     }
 
-    /* Özel İmleç Mobilde Gizlendi */
-    .cursor {
-        display: none;
+    .cta-button:hover {
+        background: #FF00FF;
+        transform: scale(1.1);
     }
 
-}
+    /* Mobil Cihazlar için Stil */
+    @media screen and (max-width: 768px) {
+        /* Arka Plan - Daha yavaş kayma efekti */
+        @keyframes starsMove {
+            from {
+                background-position: 0 0;
+            }
+            to {
+                background-position: 1000px 1000px; /* Daha az kaydırma hareketi */
+            }
+        }
 
-    </style>
+        /* Navbar - Daha küçük ve kompakt */
+        .navbar {
+            padding: 10px 0;
+            font-size: 14px;
+        }
+
+        .navbar a {
+            font-size: 14px;
+            margin: 0 10px;
+        }
+
+        /* Logo - Küçültüldü ve hizalandı */
+        .logo {
+            font-size: 60px;
+            margin-top: 50px;
+            letter-spacing: 3px;
+        }
+
+        .logo::after {
+            font-size: 20px;
+            margin-top: 10px;
+        }
+
+        /* Hizmetler Bölümü */
+        .services-section {
+            margin-top: 50px;
+            padding: 20px;
+            width: 90%;
+            text-align: center;
+        }
+
+        .services-section h2 {
+            font-size: 28px;
+        }
+
+        .service-item {
+            padding: 15px;
+            margin: 10px 0;
+        }
+
+        .service-item h3 {
+            font-size: 22px;
+        }
+
+        .service-item p {
+            font-size: 16px;
+        }
+
+        /* CTA Butonu */
+        .cta-button {
+            font-size: 16px;
+            padding: 12px 24px;
+        }
+
+        /* Özel İmleç Mobilde Gizlendi */
+        .cursor {
+            display: none;
+        }
+    }
+</style>
+
 <body>
     <div class="background-stars"></div>
 
@@ -293,25 +291,25 @@
         <h2>Our Services</h2>
         
         <div class="service-item">
-            <img src="https://github.com/Azccriminal/cybertree-visual/blob/main/QUARD_OBJECTIVE.jpg?raw=true alt="Social Icon">
+            <img src="https://github.com/Azccriminal/cybertree-visual/blob/main/QUARD_OBJECTIVE.jpg?raw=true" alt="Cyber-tree Visual" class="social-icon">
             <h3>Cyber-tree Visual</h3>
             <p>The main purpose is to determine the attack and necessary scenarios by scanning other cyber attack object structures, providing the basis for the cyber tree structure. With cyber detection, you will no longer be in a situation where you cannot understand or identify any object or creature.</p>
             <a href="https://gitlab.com/Azccriminalus/cybertree-visual">Cyber-tree Visual Source code</a>
         </div>
+        
         <div class="service-item">
-            <img src="https://repository-images.githubusercontent.com/942319463/e7bb2d8c-8e34-4f60-a580-4cd8e557e195" alt="Social Icon">
+            <img src="https://repository-images.githubusercontent.com/942319463/e7bb2d8c-8e34-4f60-a580-4cd8e557e195" alt="Adamlibrary" class="social-icon">
             <h3>Adamlibrary</h3>
             <p>This project is written in C and aims to bring functionalities that are not available in Python as an extension. Some functions may not work correctly, but we will make corrections after releasing the stable version.</p>
             <a href="https://pypi.org/project/Adamlibrary/">Pypi package</a>
         </div>
-         <div class="service-item">
-         <img src="https://repository-images.githubusercontent.com/969781290/7ab8998c-4707-42e0-a772-28765611059b" alt="Social Icon">
+        
+        <div class="service-item">
+            <img src="https://repository-images.githubusercontent.com/969781290/7ab8998c-4707-42e0-a772-28765611059b" alt="Linux-AI" class="social-icon">
             <h3>Linux-AI</h3>
-            <p>This project is based on large language models and a system-level automation framework. It enables users to interact with the system through kernel modules, while the AI layer handles I/O, device, and system components as if it were part of a robotic intelligence structure.Tasks that would normally require manual effort are handled quickly and efficiently by the AI system, allowing for smoother and more autonomous interactions with your Linux environment.Currently, the project supports core components such as I/O management, CPU control, and PCIe (PCIO) operations. If you'd like to contribute to the project, the source code is open.</p>
-             
+            <p>This project is based on large language models and a system-level automation framework. It enables users to interact with the system through kernel modules, while the AI layer handles I/O, device, and system components as if it were part of a robotic intelligence structure. Tasks that would normally require manual effort are handled quickly and efficiently by the AI system, allowing for smoother and more autonomous interactions with your Linux environment. Currently, the project supports core components such as I/O management, CPU control, and PCIe (PCIO) operations. If you'd like to contribute to the project, the source code is open.</p>
             <a href="https://github.com/Zamanhuseyinli/Linux-AI">Linux-AI Source code</a>
         </div>
-        
         
         <button class="cta-button" id="exploreButton">Explore More Services</button>
     </div>

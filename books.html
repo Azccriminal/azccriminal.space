@@ -189,141 +189,146 @@
   </div>
 
   <div class="cursor" id="cursor"></div>
-
   <script>
-    const cursor = document.getElementById('cursor');
-    document.addEventListener('mousemove', (e) => {
-      cursor.style.left = `${e.pageX}px`;
-      cursor.style.top = `${e.pageY}px`;
-    });
-    document.addEventListener('mousedown', () => cursor.classList.add('active'));
-    document.addEventListener('mouseup', () => cursor.classList.remove('active'));
+  const cursor = document.getElementById('cursor');
+  document.addEventListener('mousemove', (e) => {
+    cursor.style.left = `${e.pageX}px`;
+    cursor.style.top = `${e.pageY}px`;
+  });
+  document.addEventListener('mousedown', () => cursor.classList.add('active'));
+  document.addEventListener('mouseup', () => cursor.classList.remove('active'));
 
-    
-    function updateContent() {
-      const lang = document.querySelector('.language-selector').value;
-      const bookKey = document.querySelector('.book-selector').value;
-      const book = books[bookKey];
+  function updateContent() {
+    const lang = document.querySelector('.language-selector').value;
+    const bookKey = document.querySelector('.book-selector').value;
+    const book = books[bookKey];
 
-      if (!book.translations[lang]) {
-        document.getElementById('book-cover').src = book.translations[lang].cover;
-        document.getElementById('book-title').innerText = book.translations[lang].title;
-        document.getElementById('links').innerHTML = "";
-        document.getElementById('unavailable-message').style.display = "block";
-      } else {
-        document.getElementById('book-cover').src = book.cover;
-        document.getElementById('book-title').innerText = book.translations[lang].title;
+    const translation = book.translations[lang];
 
-        const linksContainer = document.getElementById('links');
-        linksContainer.innerHTML = "";
-        book.translations[lang].links.forEach(link => {
-          const a = document.createElement('a');
-          a.className = "link-btn";
-          a.href = link.url;
-          a.target = "_blank";
-          a.innerText = link.text;
-          linksContainer.appendChild(a);
-        });
+    if (!translation) {
+      document.getElementById('book-cover').src = "";
+      document.getElementById('book-title').innerText = "This book is not available in the selected language.";
+      document.getElementById('links').innerHTML = "";
+      document.getElementById('unavailable-message').style.display = "block";
+    } else {
+      document.getElementById('book-cover').src = translation.cover || "";
+      document.getElementById('book-title').innerText = translation.title || "";
+      
+      const linksContainer = document.getElementById('links');
+      linksContainer.innerHTML = "";
+      translation.links.forEach(link => {
+        const a = document.createElement('a');
+        a.className = "link-btn";
+        a.href = link.url;
+        a.target = "_blank";
+        a.innerText = link.text;
+        linksContainer.appendChild(a);
+      });
 
-        document.getElementById('unavailable-message').style.display = "none";
-      }
-    }
-const books = {
-  espada: {
-    cover: "https://cdn.vivlio.com/product/v1/d99677d8-5980-436a-87fd-36ebc9fb0126/front-cover?tag=AQBdCB9Wx9%2BFLOHHNuemqyFXRVNmeFRhSi8%3D&size=450x675",
-    translations: {
-      tr: {
-        title: "Kurtlar Vadisi Espada Verdadera",
-        links: [
-          { text: "Apple", url: "https://books.apple.com/us/book/kurtlar-vadisi-espada-verdadera-t%C3%BCrk%C3%A7e/id6744296803" },
-          { text: "Fable", url: "https://fable.co/book/x-9798230986416" },
-          { text: "Smashwords", url: "https://www.smashwords.com/books/view/1743037" },
-          { text: "Tolino", url: "https://www.thalia.de/shop/home/artikeldetails/A1074956660" },
-          { text: "Vivlio", url: "https://shop.vivlio.com/product/9798230986416_9798230986416_10020/kurtlar-vadisi-espada-verdadera-turkce" }
-        ]
-      },
-      en: {
-        title: "The Valley of Wolves Espada Verdadera",
-        links: [
-          { text: "Apple", url: "https://books.apple.com/us/book/kurtlar-vadisi-espada-verdadera/id6744280845" },
-          { text: "Barnes And Noble", url: "https://www.barnesandnoble.com/w/kurtlar-vadisi-espada-verdadera-zamanhuseyinli/1147239825;jsessionid=B03655D42D54F0DA93C261A338E2DA40.prodny_store01-atgap07?ean=2940180549174" },
-          { text: "Fable", url: "https://fable.co/book/x-9798230767596" },
-          { text: "Palace Marketplace", url: "https://market.thepalaceproject.org/item/6568303" },
-          { text: "Smashwords", url: "https://www.smashwords.com/books/view/1742796" },
-          { text: "Tolino", url: "https://www.thalia.de/shop/home/artikeldetails/A1074956618" },
-          { text: "Vivlio", url: "https://shop.vivlio.com/product/9798230767596_9798230767596_10020/kurtlar-vadisi-espada-verdadera" }
-        ]
-      },
-      es: {
-        title: "El Valle de los Lobos Espada Verdadera",
-        links: [
-          { text: "Apple", url: "https://books.apple.com/us/book/kurtlar-vadisi-espada-verdadera-espa%C3%B1ol/id6744296977" },
-          { text: "Fable", url: "https://fable.co/book/x-9798230790402" },
-          { text: "Smashwords", url: "https://www.smashwords.com/books/view/1743029" },
-          { text: "Tolino", url: "https://www.thalia.de/shop/home/artikeldetails/A1074956661" },
-          { text: "Vivlio", url: "https://shop.vivlio.com/product/9798230790402_9798230790402_10020/kurtlar-vadisi-espada-verdaderaespanol" }
-        ]
-      }
-    }
-  },
-  LDPS_I: {
-    cover: "https://cdn.vivlio.com/product/v1/be210ca6-df18-4741-a2ac-ac9998463809/front-cover?tag=AQCM8iUOMIXMDduTTDaN5ni0cDF5ZHAwb1Y%3D&size=450x675",
-    translations: {
-      tr: {
-        title: "LDPS I",
-        links: [
-          { text: "Apple", url: "https://books.apple.com/us/book/ldps-i/id6744409214" },
-          { text: "Fable", url: "https://fable.co/book/x-9798230900559" },
-          { text: "Palace Marketplace", url: "https://market.thepalaceproject.org/item/6609640" },
-          { text: "Smashwords", url: "https://www.smashwords.com/books/view/1745039" },
-          { text: "Tolino", url: "https://www.thalia.de/shop/home/artikeldetails/A1074968015" },
-          { text: "Vivlio", url: "https://shop.vivlio.com/product/9798230900559_9798230900559_10020/ldps-i" }
-        ]
-      },
-      en: {
-        title: "LDPS I",
-        links: [
-          { text: "Apple", url: "https://books.apple.com/us/book/ldps-i-english/id6744374345" },
-          { text: "Fable", url: "https://fable.co/book/x-9798230456605" },
-          { text: "Palace Marketplace", url: "https://market.thepalaceproject.org/item/6571658" },
-          { text: "Smashwords", url: "https://www.smashwords.com/books/view/1744755" },
-          { text: "Tolino", url: "https://www.thalia.de/shop/home/artikeldetails/A1074965680" },
-          { text: "Vivlio", url: "https://shop.vivlio.com/product/9798230456605_9798230456605_10020/ldps-i-english" }
-        ]
-      }
-    }
-  },
-Blood_compass: {
-  translations: {
-    tr: {
-      title: "Kan Pusulası",
-      cover: "https://cdn.vivlio.com/product/v1/fcd2ca50-8f3b-4935-8f80-d877a44d6f61/front-cover?tag=AQA4MX2GCOZx2HlxE0eyc61mS001WnFDOWQ%3D&size=450x675",
-      links: [
-        { text: "Apple", url: "https://books.apple.com/us/book/kan-pusulasi/id6744580727" },
-        { text: "Fable", url: "https://fable.co/book/x-9798230905912" },
-        { text: "Palace Marketplace", url: "https://market.thepalaceproject.org/item/6612866" },
-        { text: "Smashwords", url: "https://www.smashwords.com/books/view/1747406" },
-        { text: "Tolino", url: "https://www.thalia.de/shop/home/artikeldetails/A1075017404" },
-        { text: "Vivlio", url: "https://shop.vivlio.com/product/9798230905912_9798230905912_10020/kan-pusulasi" }
-      ]
-    },
-    en: {
-      title: "Blood Compass",
-      cover: "https://cdn.vivlio.com/product/v1/51088036-a77f-4d7e-976d-0c2d0792199b/front-cover?tag=AQDPJE2AKtENhwxcwpnOBEwtVE41M2F3V2w%3D&size=450x675",
-      links: [
-        { text: "Apple", url: "https://books.apple.com/us/book/blood-compass/id6745180186" },
-        { text: "Barnes and Noble", url: "https://www.barnesandnoble.com/w/blood-compass-zamanhuseyinli/1147348725?ean=2940180795151" },
-        { text: "Everand", url: "https://www.everand.com/book/854970832/Blood-Compass-1-1" },
-        { text: "Fable", url: "https://fable.co/book/x-9798231453658" },
-        { text: "Rakuten Kobo", url: "https://www.kobo.com/ww/en/ebook/blood-compass-2" },
-        { text: "Smashwords", url: "https://www.smashwords.com/books/view/1747406" },
-        { text: "Vivlio", url: "https://shop.vivlio.com/product/9798231453658_9798231453658_10020/blood-compass" }
-      ]
+      document.getElementById('unavailable-message').style.display = "none";
     }
   }
-}
 
-    updateContent();
-  </script>
+  const books = {
+    espada: {
+      translations: {
+        tr: {
+          title: "Kurtlar Vadisi Espada Verdadera",
+          cover: "https://cdn.vivlio.com/product/v1/d99677d8-5980-436a-87fd-36ebc9fb0126/front-cover?tag=AQBdCB9Wx9%2BFLOHHNuemqyFXRVNmeFRhSi8%3D&size=450x675",
+          links: [
+            { text: "Apple", url: "https://books.apple.com/us/book/kurtlar-vadisi-espada-verdadera-t%C3%BCrk%C3%A7e/id6744296803" },
+            { text: "Fable", url: "https://fable.co/book/x-9798230986416" },
+            { text: "Smashwords", url: "https://www.smashwords.com/books/view/1743037" },
+            { text: "Tolino", url: "https://www.thalia.de/shop/home/artikeldetails/A1074956660" },
+            { text: "Vivlio", url: "https://shop.vivlio.com/product/9798230986416_9798230986416_10020/kurtlar-vadisi-espada-verdadera-turkce" }
+          ]
+        },
+        en: {
+          title: "The Valley of Wolves Espada Verdadera",
+          cover: "https://cdn.vivlio.com/product/v1/d99677d8-5980-436a-87fd-36ebc9fb0126/front-cover?tag=AQBdCB9Wx9%2BFLOHHNuemqyFXRVNmeFRhSi8%3D&size=450x675",
+          links: [
+            { text: "Apple", url: "https://books.apple.com/us/book/kurtlar-vadisi-espada-verdadera/id6744280845" },
+            { text: "Barnes And Noble", url: "https://www.barnesandnoble.com/w/kurtlar-vadisi-espada-verdadera-zamanhuseyinli/1147239825?ean=2940180549174" },
+            { text: "Fable", url: "https://fable.co/book/x-9798230767596" },
+            { text: "Palace Marketplace", url: "https://market.thepalaceproject.org/item/6568303" },
+            { text: "Smashwords", url: "https://www.smashwords.com/books/view/1742796" },
+            { text: "Tolino", url: "https://www.thalia.de/shop/home/artikeldetails/A1074956618" },
+            { text: "Vivlio", url: "https://shop.vivlio.com/product/9798230767596_9798230767596_10020/kurtlar-vadisi-espada-verdadera" }
+          ]
+        },
+        es: {
+          title: "El Valle de los Lobos Espada Verdadera",
+          cover: "https://cdn.vivlio.com/product/v1/d99677d8-5980-436a-87fd-36ebc9fb0126/front-cover?tag=AQBdCB9Wx9%2BFLOHHNuemqyFXRVNmeFRhSi8%3D&size=450x675",
+          links: [
+            { text: "Apple", url: "https://books.apple.com/us/book/kurtlar-vadisi-espada-verdadera-espa%C3%B1ol/id6744296977" },
+            { text: "Fable", url: "https://fable.co/book/x-9798230790402" },
+            { text: "Smashwords", url: "https://www.smashwords.com/books/view/1743029" },
+            { text: "Tolino", url: "https://www.thalia.de/shop/home/artikeldetails/A1074956661" },
+            { text: "Vivlio", url: "https://shop.vivlio.com/product/9798230790402_9798230790402_10020/kurtlar-vadisi-espada-verdaderaespanol" }
+          ]
+        }
+      }
+    },
+    LDPS_I: {
+      translations: {
+        tr: {
+          title: "LDPS I",
+          cover: "https://cdn.vivlio.com/product/v1/be210ca6-df18-4741-a2ac-ac9998463809/front-cover?tag=AQCM8iUOMIXMDduTTDaN5ni0cDF5ZHAwb1Y%3D&size=450x675",
+          links: [
+            { text: "Apple", url: "https://books.apple.com/us/book/ldps-i/id6744409214" },
+            { text: "Fable", url: "https://fable.co/book/x-9798230900559" },
+            { text: "Palace Marketplace", url: "https://market.thepalaceproject.org/item/6609640" },
+            { text: "Smashwords", url: "https://www.smashwords.com/books/view/1745039" },
+            { text: "Tolino", url: "https://www.thalia.de/shop/home/artikeldetails/A1074968015" },
+            { text: "Vivlio", url: "https://shop.vivlio.com/product/9798230900559_9798230900559_10020/ldps-i" }
+          ]
+        },
+        en: {
+          title: "LDPS I",
+          cover: "https://cdn.vivlio.com/product/v1/be210ca6-df18-4741-a2ac-ac9998463809/front-cover?tag=AQCM8iUOMIXMDduTTDaN5ni0cDF5ZHAwb1Y%3D&size=450x675",
+          links: [
+            { text: "Apple", url: "https://books.apple.com/us/book/ldps-i-english/id6744374345" },
+            { text: "Fable", url: "https://fable.co/book/x-9798230456605" },
+            { text: "Palace Marketplace", url: "https://market.thepalaceproject.org/item/6571658" },
+            { text: "Smashwords", url: "https://www.smashwords.com/books/view/1744755" },
+            { text: "Tolino", url: "https://www.thalia.de/shop/home/artikeldetails/A1074965680" },
+            { text: "Vivlio", url: "https://shop.vivlio.com/product/9798230456605_9798230456605_10020/ldps-i-english" }
+          ]
+        }
+      }
+    },
+    Blood_compass: {
+      translations: {
+        tr: {
+          title: "Kan Pusulası",
+          cover: "https://cdn.vivlio.com/product/v1/fcd2ca50-8f3b-4935-8f80-d877a44d6f61/front-cover?tag=AQA4MX2GCOZx2HlxE0eyc61mS001WnFDOWQ%3D&size=450x675",
+          links: [
+            { text: "Apple", url: "https://books.apple.com/us/book/kan-pusulasi/id6744580727" },
+            { text: "Fable", url: "https://fable.co/book/x-9798230905912" },
+            { text: "Palace Marketplace", url: "https://market.thepalaceproject.org/item/6612866" },
+            { text: "Smashwords", url: "https://www.smashwords.com/books/view/1747406" },
+            { text: "Tolino", url: "https://www.thalia.de/shop/home/artikeldetails/A1075017404" },
+            { text: "Vivlio", url: "https://shop.vivlio.com/product/9798230905912_9798230905912_10020/kan-pusulasi" }
+          ]
+        },
+        en: {
+          title: "Blood Compass",
+          cover: "https://cdn.vivlio.com/product/v1/51088036-a77f-4d7e-976d-0c2d0792199b/front-cover?tag=AQDPJE2AKtENhwxcwpnOBEwtVE41M2F3V2w%3D&size=450x675",
+          links: [
+            { text: "Apple", url: "https://books.apple.com/us/book/blood-compass/id6745180186" },
+            { text: "Barnes and Noble", url: "https://www.barnesandnoble.com/w/blood-compass-zamanhuseyinli/1147348725?ean=2940180795151" },
+            { text: "Everand", url: "https://www.everand.com/book/854970832/Blood-Compass-1-1" },
+            { text: "Fable", url: "https://fable.co/book/x-9798231453658" },
+            { text: "Rakuten Kobo", url: "https://www.kobo.com/ww/en/ebook/blood-compass-2" },
+            { text: "Smashwords", url: "https://www.smashwords.com/books/view/1747406" },
+            { text: "Vivlio", url: "https://shop.vivlio.com/product/9798231453658_9798231453658_10020/blood-compass" }
+          ]
+        }
+      }
+    }
+  };
+
+  updateContent();
+</script>
 </body>
 </html>

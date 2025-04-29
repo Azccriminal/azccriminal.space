@@ -198,6 +198,36 @@
     });
     document.addEventListener('mousedown', () => cursor.classList.add('active'));
     document.addEventListener('mouseup', () => cursor.classList.remove('active'));
+
+    
+    function updateContent() {
+      const lang = document.querySelector('.language-selector').value;
+      const bookKey = document.querySelector('.book-selector').value;
+      const book = books[bookKey];
+
+      if (!book.translations[lang]) {
+        document.getElementById('book-cover').src = book.cover;
+        document.getElementById('book-title').innerText = "";
+        document.getElementById('links').innerHTML = "";
+        document.getElementById('unavailable-message').style.display = "block";
+      } else {
+        document.getElementById('book-cover').src = book.cover;
+        document.getElementById('book-title').innerText = book.translations[lang].title;
+
+        const linksContainer = document.getElementById('links');
+        linksContainer.innerHTML = "";
+        book.translations[lang].links.forEach(link => {
+          const a = document.createElement('a');
+          a.className = "link-btn";
+          a.href = link.url;
+          a.target = "_blank";
+          a.innerText = link.text;
+          linksContainer.appendChild(a);
+        });
+
+        document.getElementById('unavailable-message').style.display = "none";
+      }
+    }
 const books = {
   espada: {
     cover: "https://cdn.vivlio.com/product/v1/d99677d8-5980-436a-87fd-36ebc9fb0126/front-cover?tag=AQBdCB9Wx9%2BFLOHHNuemqyFXRVNmeFRhSi8%3D&size=450x675",
@@ -264,66 +294,33 @@ const books = {
     }
   },
   Blood_compass: {
-    cover: "https://cdn.vivlio.com/product/v1/fcd2ca50-8f3b-4935-8f80-d877a44d6f61/front-cover?tag=AQA4MX2GCOZx2HlxE0eyc61mS001WnFDOWQ%3D&size=450x675",
-    translations: {
-      tr: {
-        title: "Kan Pusulası",
-        links: [
-          { text: "Apple", url: "https://books.apple.com/us/book/kan-pusulasi/id6744580727" },
-          { text: "Fable", url: "https://fable.co/book/x-9798230905912" },
-          { text: "Palace Marketplace", url: "https://market.thepalaceproject.org/item/6612866" },
-          { text: "Smashwords", url: "https://www.smashwords.com/books/view/1747406" },
-          { text: "Tolino", url: "https://www.thalia.de/shop/home/artikeldetails/A1075017404" },
-          { text: "Vivlio", url: "https://shop.vivlio.com/product/9798230905912_9798230905912_10020/kan-pusulasi" }
-        ]
-      }
-    }
-  },
+    tr: {
+      title: "Kan Pusulası",
+      cover: "https://cdn.vivlio.com/product/v1/fcd2ca50-8f3b-4935-8f80-d877a44d6f61/front-cover?tag=AQA4MX2GCOZx2HlxE0eyc61mS001WnFDOWQ%3D&size=450x675",
+      links: [
+        { text: "Apple", url: "https://books.apple.com/us/book/kan-pusulasi/id6744580727" },
+        { text: "Fable", url: "https://fable.co/book/x-9798230905912" },
+        { text: "Palace Marketplace", url: "https://market.thepalaceproject.org/item/6612866" },
+        { text: "Smashwords", url: "https://www.smashwords.com/books/view/1747406" },
+        { text: "Tolino", url: "https://www.thalia.de/shop/home/artikeldetails/A1075017404" },
+        { text: "Vivlio", url: "https://shop.vivlio.com/product/9798230905912_9798230905912_10020/kan-pusulasi" }
+      ]
+    },
     en: {
-        cover: "https://cdn.vivlio.com/product/v1/51088036-a77f-4d7e-976d-0c2d0792199b/front-cover?tag=AQDPJE2AKtENhwxcwpnOBEwtVE41M2F3V2w%3D&size=450x675",
-        title: "Blood compass",
-        links: [
-          { text: "Apple", url: "https://books.apple.com/us/book/blood-compass/id6745180186" },
-          { text: 'Barnes and Noble", url: "https://www.barnesandnoble.com/w/blood-compass-zamanhuseyinli/1147348725;jsessionid=BD5E0B6036027EF8AC5D7625C0D560E0.prodny_store02-atgap14?ean=2940180795151"},
-          { text: "Everand", url: "https://www.everand.com/book/854970832/Blood-Compass-1-1" },
-          { text: "Fable", url: "https://fable.co/book/x-9798231453658" },
-          { text: "Rakuten Kobo", url: "https://www.kobo.com/ww/en/ebook/blood-compass-2"},
-          { text: "Smashwords", url: "https://www.smashwords.com/books/view/1747406" },
-          { text: "Vivlio", url: "https://shop.vivlio.com/product/9798231453658_9798231453658_10020/blood-compass" }
-        ]
-      }
+      title: "Blood Compass",
+      cover: "https://cdn.vivlio.com/product/v1/51088036-a77f-4d7e-976d-0c2d0792199b/front-cover?tag=AQDPJE2AKtENhwxcwpnOBEwtVE41M2F3V2w%3D&size=450x675",
+      links: [
+        { text: "Apple", url: "https://books.apple.com/us/book/blood-compass/id6745180186" },
+        { text: "Barnes and Noble", url: "https://www.barnesandnoble.com/w/blood-compass-zamanhuseyinli/1147348725;jsessionid=BD5E0B6036027EF8AC5D7625C0D560E0.prodny_store02-atgap14?ean=2940180795151" },
+        { text: "Everand", url: "https://www.everand.com/book/854970832/Blood-Compass-1-1" },
+        { text: "Fable", url: "https://fable.co/book/x-9798231453658" },
+        { text: "Rakuten Kobo", url: "https://www.kobo.com/ww/en/ebook/blood-compass-2" },
+        { text: "Smashwords", url: "https://www.smashwords.com/books/view/1747406" },
+        { text: "Vivlio", url: "https://shop.vivlio.com/product/9798231453658_9798231453658_10020/blood-compass" }
+      ]
     }
   }
 };
-    
-    function updateContent() {
-      const lang = document.querySelector('.language-selector').value;
-      const bookKey = document.querySelector('.book-selector').value;
-      const book = books[bookKey];
-
-      if (!book.translations[lang]) {
-        document.getElementById('book-cover').src = book.cover;
-        document.getElementById('book-title').innerText = "";
-        document.getElementById('links').innerHTML = "";
-        document.getElementById('unavailable-message').style.display = "block";
-      } else {
-        document.getElementById('book-cover').src = book.cover;
-        document.getElementById('book-title').innerText = book.translations[lang].title;
-
-        const linksContainer = document.getElementById('links');
-        linksContainer.innerHTML = "";
-        book.translations[lang].links.forEach(link => {
-          const a = document.createElement('a');
-          a.className = "link-btn";
-          a.href = link.url;
-          a.target = "_blank";
-          a.innerText = link.text;
-          linksContainer.appendChild(a);
-        });
-
-        document.getElementById('unavailable-message').style.display = "none";
-      }
-    }
 
     updateContent();
   </script>

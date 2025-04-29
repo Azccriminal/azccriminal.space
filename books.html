@@ -206,8 +206,8 @@
       const book = books[bookKey];
 
       if (!book.translations[lang]) {
-        document.getElementById('book-cover').src = book.cover;
-        document.getElementById('book-title').innerText = "";
+        document.getElementById('book-cover').src = book.translations[lang].cover;
+        document.getElementById('book-title').innerText = book.translations[lang].title;
         document.getElementById('links').innerHTML = "";
         document.getElementById('unavailable-message').style.display = "block";
       } else {
@@ -293,7 +293,8 @@ const books = {
       }
     }
   },
-  Blood_compass: {
+Blood_compass: {
+  translations: {
     tr: {
       title: "Kan Pusulası",
       cover: "https://cdn.vivlio.com/product/v1/fcd2ca50-8f3b-4935-8f80-d877a44d6f61/front-cover?tag=AQA4MX2GCOZx2HlxE0eyc61mS001WnFDOWQ%3D&size=450x675",
@@ -311,7 +312,7 @@ const books = {
       cover: "https://cdn.vivlio.com/product/v1/51088036-a77f-4d7e-976d-0c2d0792199b/front-cover?tag=AQDPJE2AKtENhwxcwpnOBEwtVE41M2F3V2w%3D&size=450x675",
       links: [
         { text: "Apple", url: "https://books.apple.com/us/book/blood-compass/id6745180186" },
-        { text: "Barnes and Noble", url: "https://www.barnesandnoble.com/w/blood-compass-zamanhuseyinli/1147348725;jsessionid=BD5E0B6036027EF8AC5D7625C0D560E0.prodny_store02-atgap14?ean=2940180795151" },
+        { text: "Barnes and Noble", url: "https://www.barnesandnoble.com/w/blood-compass-zamanhuseyinli/1147348725?ean=2940180795151" },
         { text: "Everand", url: "https://www.everand.com/book/854970832/Blood-Compass-1-1" },
         { text: "Fable", url: "https://fable.co/book/x-9798231453658" },
         { text: "Rakuten Kobo", url: "https://www.kobo.com/ww/en/ebook/blood-compass-2" },
@@ -320,7 +321,8 @@ const books = {
       ]
     }
   }
-};
+}
+
     updateContent();
   </script>
 </body>

@@ -278,10 +278,23 @@ const books = {
         ]
       }
     }
+  },
+    en: {
+        title: "Kan Pusulası",
+        links: [
+          { text: "Apple", url: "https://books.apple.com/us/book/blood-compass/id6745180186" },
+          { text: 'Barnes and Noble", url: "https://www.barnesandnoble.com/w/blood-compass-zamanhuseyinli/1147348725;jsessionid=BD5E0B6036027EF8AC5D7625C0D560E0.prodny_store02-atgap14?ean=2940180795151"},
+          { text: "Everand", url: "https://www.everand.com/book/854970832/Blood-Compass-1-1" },
+          { text: "Fable", url: "https://fable.co/book/x-9798231453658" },
+          { text: "Rakuten Kobo", url: "https://www.kobo.com/ww/en/ebook/blood-compass-2"},
+          { text: "Smashwords", url: "https://www.smashwords.com/books/view/1747406" },
+          { text: "Vivlio", url: "https://shop.vivlio.com/product/9798231453658_9798231453658_10020/blood-compass" }
+        ]
+      }
+    }
   }
 };
-
-
+    
     function updateContent() {
       const lang = document.querySelector('.language-selector').value;
       const bookKey = document.querySelector('.book-selector').value;

@@ -133,42 +133,69 @@
       margin-top: 20px;
       display: none;
     }
-    @media (max-width: 600px) {
+   @media (max-width: 600px) {
   h1 {
-    font-size: 24px;
+    font-size: 22px;
+    margin: 10px 0;
     text-align: center;
   }
 
   .book-cover {
-    width: 120px;
-    margin: 0 auto;
-    display: block;
+    width: 100px;
+    height: auto;
+    margin: 10px auto;
   }
 
   .link-btn {
     font-size: 12px;
-    padding: 8px;
+    padding: 8px 10px;
     margin: 5px 0;
+    display: block;
     width: 100%;
-    box-sizing: border-box;
+    text-align: center;
   }
 
   .language-selector, .book-selector {
-    font-size: 14px;
-    padding: 5px;
-    width: 90%;
-    margin: 10px auto;
-    box-sizing: border-box;
+    font-size: 12px;
+    padding: 6px;
+    position: relative;
+    width: auto;
+    margin-bottom: 10px;
   }
 
   .language-selector {
-    display: block;
-    margin-bottom: 15px;
+    right: 10px;
+    top: 10px;
+    display: inline-block;
   }
 
   .book-selector {
-    display: block;
-    margin-bottom: 15px;
+    left: 10px;
+    top: 10px;
+    display: inline-block;
+  }
+
+  #book-title {
+    font-size: 16px;
+    text-align: center;
+    margin: 10px 0;
+  }
+
+  #links {
+    text-align: center;
+    padding: 0 10px;
+  }
+
+  #unavailable-message {
+    font-size: 14px;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .container {
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
   }
 }
 

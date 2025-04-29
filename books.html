@@ -170,11 +170,8 @@
   <div class="container">
    <select class="language-selector" onchange="updateBookOptions(); updateContent();"></select>
 
-    <select class="book-selector" onchange="updateContent()">
-      <option value="espada" selected>Espada Verdadera</option>
-      <option value="LDPS_I">LDPS I</option>
-      <option value="Blood_compass">BLOOD COMPASS</option>
-    </select>
+    <select class="book-selector" onchange="updateContent();"></select>
+
 
     <img id="book-cover" src="" alt="Book Cover" class="book-cover" />
     <h1 id="book-title"></h1>
@@ -377,9 +374,8 @@
   // Sayfa yüklendiğinde:
   window.addEventListener("DOMContentLoaded", () => {
     populateLanguageOptions();
-    updateBookOptions(); // Bu içerik güncellemeyi de tetikler
+    updateBookOptions(); 
   });
 </script>
-
 </body>
 </html> 

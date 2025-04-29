@@ -168,11 +168,7 @@
   <div class="background-stars"></div>
 
   <div class="container">
-   <select class="language-selector" onchange="updateBookOptions(); updateContent();">
-      <option value="tr">🇹🇷 Türkçe</option>
-      <option value="en" selected>🇬🇧 English</option>
-      <option value="es">🇪🇸 Español</option>
-    </select>
+   <select class="language-selector" onchange="updateBookOptions(); updateContent();"></select>
 
     <select class="book-selector" onchange="updateContent()">
       <option value="espada" selected>Espada Verdadera</option>
@@ -197,38 +193,6 @@
   });
   document.addEventListener('mousedown', () => cursor.classList.add('active'));
   document.addEventListener('mouseup', () => cursor.classList.remove('active'));
-function updateContent() {
-  const lang = document.querySelector('.language-selector').value;
-  const bookKey = document.querySelector('.book-selector').value;
-  const book = books[bookKey];
-
-  const translation = book?.translations[lang];
-
-  if (!translation) {
-    document.getElementById('book-cover').src = "";
-    document.getElementById('book-title').innerText = "This book is not available in the selected language.";
-    document.getElementById('links').innerHTML = "";
-    document.getElementById('unavailable-message').style.display = "block";
-  } else {
-    document.getElementById('book-cover').src = translation.cover || "";
-    document.getElementById('book-title').innerText = translation.title || "";
-
-    const linksContainer = document.getElementById('links');
-    linksContainer.innerHTML = "";
-    translation.links.forEach(link => {
-      const a = document.createElement('a');
-      a.className = "link-btn";
-      a.href = link.url;
-      a.target = "_blank";
-      a.innerText = link.text;
-      linksContainer.appendChild(a);
-    });
-
-    document.getElementById('unavailable-message').style.display = "none";
-  }
-}
-
-
 
   const books = {
     espada: {
@@ -328,30 +292,94 @@ function updateContent() {
       }
     }
   };
+  const languageLabels = {
+    tr: "🇹🇷 Türkçe",
+    en: "🇬🇧 English",
+    es: "🇪🇸 Español",
+    fr: "🇫🇷 Français",
+    de: "🇩🇪 Deutsch"
+  };
+
+  function populateLanguageOptions() {
+    const langSelector = document.querySelector('.language-selector');
+    langSelector.innerHTML = "";
+
+    const availableLanguages = new Set();
+
+    for (const book of Object.values(books)) {
+      for (const lang of Object.keys(book.translations)) {
+        availableLanguages.add(lang);
+      }
+    }
+
+    for (const lang of availableLanguages) {
+      const option = document.createElement("option");
+      option.value = lang;
+      option.textContent = languageLabels[lang] || lang;
+      langSelector.appendChild(option);
+    }
+
+    langSelector.selectedIndex = 0;
+  }
 
   function updateBookOptions() {
-  const lang = document.querySelector('.language-selector').value;
-  const bookSelector = document.querySelector('.book-selector');
+    const lang = document.querySelector('.language-selector').value;
+    const bookSelector = document.querySelector('.book-selector');
 
-  // Temizle
-  bookSelector.innerHTML = "";
+    bookSelector.innerHTML = "";
 
-  for (const [key, book] of Object.entries(books)) {
-    if (book.translations[lang]) {
-      const option = document.createElement('option');
-      option.value = key;
-      option.textContent = book.translations[lang].title || key;
-      bookSelector.appendChild(option);
+    for (const [key, book] of Object.entries(books)) {
+      if (book.translations[lang]) {
+        const option = document.createElement('option');
+        option.value = key;
+        option.textContent = book.translations[lang].title || key;
+        bookSelector.appendChild(option);
+      }
+    }
+
+    if (bookSelector.options.length > 0) {
+      bookSelector.selectedIndex = 0;
+    }
+
+    updateContent();
+  }
+
+  function updateContent() {
+    const lang = document.querySelector('.language-selector').value;
+    const bookKey = document.querySelector('.book-selector').value;
+    const book = books[bookKey];
+    const translation = book?.translations[lang];
+
+    if (!translation) {
+      document.getElementById('book-cover').src = "";
+      document.getElementById('book-title').innerText = "This book is not available in the selected language.";
+      document.getElementById('links').innerHTML = "";
+      document.getElementById('unavailable-message').style.display = "block";
+    } else {
+      document.getElementById('book-cover').src = translation.cover || "";
+      document.getElementById('book-title').innerText = translation.title || "";
+
+      const linksContainer = document.getElementById('links');
+      linksContainer.innerHTML = "";
+      translation.links.forEach(link => {
+        const a = document.createElement('a');
+        a.className = "link-btn";
+        a.href = link.url;
+        a.target = "_blank";
+        a.innerText = link.text;
+        linksContainer.appendChild(a);
+      });
+
+      document.getElementById('unavailable-message').style.display = "none";
     }
   }
 
-  // İlk kitabı seç ve içerik güncelle
-  if (bookSelector.options.length > 0) {
-    bookSelector.selectedIndex = 0;
-  }
-
-  updateContent();
-}
+  // Sayfa yüklendiğinde:
+  window.addEventListener("DOMContentLoaded", () => {
+    populateLanguageOptions();
+    updateBookOptions(); // Bu içerik güncellemeyi de tetikler
+  });
 </script>
+
 </body>
 </html> 

@@ -168,9 +168,13 @@
   <div class="background-stars"></div>
 
   <div class="container">
-   <select class="language-selector" onchange="updateBookOptions(); updateContent();"></select>
+   <select class="language-selector"></select>
 
-    <select class="book-selector" onchange="updateContent();"></select>
+ <select class="book-selector">
+  <option value="espada">Espada Verdadera</option>
+  <option value="LDPS_I">LDPS I</option>
+  <option value="Blood_compass">Blood Compass</option>
+</select>
 
 
     <img id="book-cover" src="" alt="Book Cover" class="book-cover" />
@@ -182,7 +186,8 @@
   </div>
 
   <div class="cursor" id="cursor"></div>
-  <script>
+
+<script>
   const cursor = document.getElementById('cursor');
   document.addEventListener('mousemove', (e) => {
     cursor.style.left = `${e.pageX}px`;
@@ -191,7 +196,7 @@
   document.addEventListener('mousedown', () => cursor.classList.add('active'));
   document.addEventListener('mouseup', () => cursor.classList.remove('active'));
 
-  const books = {
+    const books = {
     espada: {
       translations: {
         tr: {
@@ -289,32 +294,29 @@
       }
     }
   };
-  const languageLabels = {
-    tr: "🇹🇷 Türkçe",
-    en: "🇬🇧 English",
-    es: "🇪🇸 Español",
-    fr: "🇫🇷 Français",
-    de: "🇩🇪 Deutsch"
-  };
 
-  function populateLanguageOptions() {
+  function updateLanguageOptions() {
+    const bookKey = document.querySelector('.book-selector').value;
     const langSelector = document.querySelector('.language-selector');
     langSelector.innerHTML = "";
 
-    const availableLanguages = new Set();
+    const book = books[bookKey];
+    const availableLanguages = Object.keys(book.translations);
 
-    for (const book of Object.values(books)) {
-      for (const lang of Object.keys(book.translations)) {
-        availableLanguages.add(lang);
-      }
-    }
+    const languageLabels = {
+      tr: "🇹🇷 Türkçe",
+      en: "🇬🇧 English",
+      es: "🇪🇸 Español",
+      fr: "🇫🇷 Français",
+      de: "🇩🇪 Deutsch"
+    };
 
-    for (const lang of availableLanguages) {
+    availableLanguages.forEach(lang => {
       const option = document.createElement("option");
       option.value = lang;
       option.textContent = languageLabels[lang] || lang;
       langSelector.appendChild(option);
-    }
+    });
 
     langSelector.selectedIndex = 0;
   }
@@ -322,7 +324,6 @@
   function updateBookOptions() {
     const lang = document.querySelector('.language-selector').value;
     const bookSelector = document.querySelector('.book-selector');
-
     bookSelector.innerHTML = "";
 
     for (const [key, book] of Object.entries(books)) {
@@ -371,10 +372,18 @@
     }
   }
 
-  // Sayfa yüklendiğinde:
-  window.addEventListener("DOMContentLoaded", () => {
-    populateLanguageOptions();
-    updateBookOptions(); 
+  document.addEventListener("DOMContentLoaded", () => {
+    updateLanguageOptions();
+    updateContent();
+  });
+
+  document.querySelector('.book-selector').addEventListener("change", () => {
+    updateLanguageOptions();
+    updateContent();
+  });
+
+  document.querySelector('.language-selector').addEventListener("change", () => {
+    updateContent();
   });
 </script>
 </body>

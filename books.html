@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
   <link rel="icon" href="https://raw.githubusercontent.com/Azccriminal/azccriminal.space/main/azccriminal.jpg">
   <style>
-body {
+    body {
       margin: 0;
       padding: 0;
       font-family: 'Orbitron', sans-serif;
@@ -197,62 +197,39 @@ body {
   });
   document.addEventListener('mousedown', () => cursor.classList.add('active'));
   document.addEventListener('mouseup', () => cursor.classList.remove('active'));
-    
-  function updateBookOptions() {
+
+  function updateContent() {
     const lang = document.querySelector('.language-selector').value;
-    const bookSelector = document.querySelector('.book-selector');
+    const bookKey = document.querySelector('.book-selector').value;
+    const book = books[bookKey];
 
-    // Var olan tüm seçenekleri temizle
-    bookSelector.innerHTML = "";
+    const translation = book.translations[lang];
 
-    for (const [key, book] of Object.entries(books)) {
-      if (book.translations[lang]) {
-        const option = document.createElement('option');
-        option.value = key;
-        option.textContent = book.translations[lang].title || key;
-        bookSelector.appendChild(option);
-      }
+    if (!translation) {
+      document.getElementById('book-cover').src = "";
+      document.getElementById('book-title').innerText = "This book is not available in the selected language.";
+      document.getElementById('links').innerHTML = "";
+      document.getElementById('unavailable-message').style.display = "block";
+    } else {
+      document.getElementById('book-cover').src = translation.cover || "";
+      document.getElementById('book-title').innerText = translation.title || "";
+      
+      const linksContainer = document.getElementById('links');
+      linksContainer.innerHTML = "";
+      translation.links.forEach(link => {
+        const a = document.createElement('a');
+        a.className = "link-btn";
+        a.href = link.url;
+        a.target = "_blank";
+        a.innerText = link.text;
+        linksContainer.appendChild(a);
+      });
+
+      document.getElementById('unavailable-message').style.display = "none";
     }
   }
 
-function updateContent() {
-  const lang = document.querySelector('.language-selector').value;
-  const bookSelector = document.querySelector('.book-selector');
-  const previousSelection = bookSelector.value;
-
-  updateBookOptions();
-
-  // Yeni seçenekler eklendikten sonra seçim güncellenmeli
-  const newBookKey = bookSelector.value;
-  const book = books[newBookKey];
-  const translation = book?.translations[lang];
-
-  if (!translation) {
-    document.getElementById('book-cover').src = "";
-    document.getElementById('book-title').innerText = "This book is not available in the selected language.";
-    document.getElementById('links').innerHTML = "";
-    document.getElementById('unavailable-message').style.display = "block";
-  } else {
-    document.getElementById('book-cover').src = translation.cover || "";
-    document.getElementById('book-title').innerText = translation.title || "";
-
-    const linksContainer = document.getElementById('links');
-    linksContainer.innerHTML = "";
-    translation.links.forEach(link => {
-      const a = document.createElement('a');
-      a.className = "link-btn";
-      a.href = link.url;
-      a.target = "_blank";
-      a.innerText = link.text;
-      linksContainer.appendChild(a);
-    });
-
-    document.getElementById('unavailable-message').style.display = "none";
-  }
-}
-
-
-    const books = {
+  const books = {
     espada: {
       translations: {
         tr: {
@@ -351,8 +328,7 @@ function updateContent() {
     }
   };
 
-
   updateContent();
-  </script>
+</script>
 </body>
-</html>
+</html> 

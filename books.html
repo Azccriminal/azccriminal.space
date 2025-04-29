@@ -168,7 +168,7 @@
   <div class="background-stars"></div>
 
   <div class="container">
-    <select class="language-selector" onchange="updateContent()">
+   <select class="language-selector" onchange="updateBookOptions(); updateContent();">
       <option value="tr">🇹🇷 Türkçe</option>
       <option value="en" selected>🇬🇧 English</option>
       <option value="es">🇪🇸 Español</option>
@@ -197,37 +197,38 @@
   });
   document.addEventListener('mousedown', () => cursor.classList.add('active'));
   document.addEventListener('mouseup', () => cursor.classList.remove('active'));
+function updateContent() {
+  const lang = document.querySelector('.language-selector').value;
+  const bookKey = document.querySelector('.book-selector').value;
+  const book = books[bookKey];
 
-  function updateContent() {
-    const lang = document.querySelector('.language-selector').value;
-    const bookKey = document.querySelector('.book-selector').value;
-    const book = books[bookKey];
+  const translation = book?.translations[lang];
 
-    const translation = book.translations[lang];
+  if (!translation) {
+    document.getElementById('book-cover').src = "";
+    document.getElementById('book-title').innerText = "This book is not available in the selected language.";
+    document.getElementById('links').innerHTML = "";
+    document.getElementById('unavailable-message').style.display = "block";
+  } else {
+    document.getElementById('book-cover').src = translation.cover || "";
+    document.getElementById('book-title').innerText = translation.title || "";
 
-    if (!translation) {
-      document.getElementById('book-cover').src = "";
-      document.getElementById('book-title').innerText = "This book is not available in the selected language.";
-      document.getElementById('links').innerHTML = "";
-      document.getElementById('unavailable-message').style.display = "block";
-    } else {
-      document.getElementById('book-cover').src = translation.cover || "";
-      document.getElementById('book-title').innerText = translation.title || "";
-      
-      const linksContainer = document.getElementById('links');
-      linksContainer.innerHTML = "";
-      translation.links.forEach(link => {
-        const a = document.createElement('a');
-        a.className = "link-btn";
-        a.href = link.url;
-        a.target = "_blank";
-        a.innerText = link.text;
-        linksContainer.appendChild(a);
-      });
+    const linksContainer = document.getElementById('links');
+    linksContainer.innerHTML = "";
+    translation.links.forEach(link => {
+      const a = document.createElement('a');
+      a.className = "link-btn";
+      a.href = link.url;
+      a.target = "_blank";
+      a.innerText = link.text;
+      linksContainer.appendChild(a);
+    });
 
-      document.getElementById('unavailable-message').style.display = "none";
-    }
+    document.getElementById('unavailable-message').style.display = "none";
   }
+}
+
+
 
   const books = {
     espada: {
@@ -328,7 +329,29 @@
     }
   };
 
+  function updateBookOptions() {
+  const lang = document.querySelector('.language-selector').value;
+  const bookSelector = document.querySelector('.book-selector');
+
+  // Temizle
+  bookSelector.innerHTML = "";
+
+  for (const [key, book] of Object.entries(books)) {
+    if (book.translations[lang]) {
+      const option = document.createElement('option');
+      option.value = key;
+      option.textContent = book.translations[lang].title || key;
+      bookSelector.appendChild(option);
+    }
+  }
+
+  // İlk kitabı seç ve içerik güncelle
+  if (bookSelector.options.length > 0) {
+    bookSelector.selectedIndex = 0;
+  }
+
   updateContent();
+}
 </script>
 </body>
 </html> 

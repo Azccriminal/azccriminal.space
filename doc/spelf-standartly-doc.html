@@ -1,75 +1,200 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Doc Library</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Floatboat | SPELF Documentation</title>
+  <style>
+    :root {
+      --bg-light: #ffffff;
+      --text-light: #111111;
+      --bg-dark: #0e0e0e;
+      --text-dark: #eeeeee;
+      --primary: #2074a0;
+      --border-light: #ddd;
+      --border-dark: #333;
+      --code-bg-light: #f3f3f3;
+      --code-bg-dark: #1e1e1e;
     }
-  </script>
+
+    html[data-theme='light'] {
+      background-color: var(--bg-light);
+      color: var(--text-light);
+    }
+
+    html[data-theme='dark'] {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
+    }
+
+    body {
+      font-family: 'Segoe UI', Roboto, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header, footer {
+      background-color: var(--primary);
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav {
+      background-color: rgba(0, 0, 0, 0.05);
+      padding: 0.5rem 2rem;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    main {
+      padding: 2rem;
+      max-width: 960px;
+      margin: auto;
+    }
+
+    h1, h2, h3 {
+      margin-top: 2rem;
+    }
+
+    pre {
+      background: var(--code-bg-light);
+      padding: 1rem;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+
+    html[data-theme='dark'] pre {
+      background: var(--code-bg-dark);
+    }
+
+    code {
+      font-family: monospace;
+      font-size: 0.9rem;
+    }
+
+    button {
+      background: none;
+      border: 2px solid white;
+      color: white;
+      padding: 0.4em 0.8em;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: rgba(255,255,255,0.2);
+    }
+
+    footer {
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    html[data-theme='dark'] nav {
+      border-color: var(--border-dark);
+    }
+  </style>
 </head>
-<body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100">
-  <div class="min-h-screen flex flex-col">
-    <!-- Header -->
-    <header class="w-full bg-gray-100 dark:bg-gray-800 p-4 shadow-md sticky top-0 z-50">
-      <div class="container mx-auto flex justify-between items-center">
-        <h1 class="text-2xl font-bold">AzDocumentation</h1>
-        <button onclick="toggleTheme()" class="bg-gray-300 dark:bg-gray-700 px-3 py-1 rounded text-sm">Toggle Theme</button>
-      </div>
-    </header>
+<body>
+  <header>
+    <h1>🛡️ Floatboat Docs</h1>
+    <button id="themeToggle">🌙 Dark Mode</button>
+  </header>
 
-    <div class="flex flex-1">
-      <!-- Sidebar -->
-      <aside class="w-64 bg-gray-50 dark:bg-gray-800 p-6 overflow-auto hidden lg:block border-r dark:border-gray-700">
-        <nav class="space-y-2">
-          <a href="#getting-started" class="block py-2 px-3 rounded hover:bg-gray-200 dark:hover:bg-gray-700">Getting Started</a>
-          <a href="#deep-architecture" class="block py-2 px-3 rounded hover:bg-gray-200 dark:hover:bg-gray-700">Deep Architecture</a>
-          <a href="#advanced-topics" class="block py-2 px-3 rounded hover:bg-gray-200 dark:hover:bg-gray-700">Advanced Topics</a>
-        </nav>
-      </aside>
+  <nav>
+    <ul>
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#spelf">SPELF Format</a></li>
+      <li><a href="#usage">Usage</a></li>
+      <li><a href="#cli">CLI</a></li>
+      <li><a href="#examples">Examples</a></li>
+    </ul>
+  </nav>
 
-      <!-- Main Content -->
-      <main class="flex-1 p-8 overflow-y-auto">
-        <section id="getting-started" class="mb-16">
-          <h2 class="text-3xl font-semibold mb-4">Getting Started</h2>
-          <p class="leading-relaxed text-lg">
-           This documentary is just official explanations. Therefore, you can find the instructions you need to use it here. "Floatboat", namely floating-boat floater-boat, this term should actually be developed more widely and standardly for the float-based data type of the software and to emphasize the security innovative open standards and to emphasize that you are as alone as a boat on the shore of the sea in this cyber world. Just like the security layer of an executables file, this layer can always be easily solved and hacked. In fact, there have been those who have tried to establish a market ecosystem on it. That's why many software have tried to prevent these methods with web-based solutions, but the problem is that standard and new solutions have been produced to prevent the protection of executables files, but despite this, hackers have tried to be successful with methods such as "cracking", "dumping", "dissambelly", but this era is over. This software does not give you the rights to protect your executables file and manage it. It will be a software that will deter attackers by giving unlimited access and will add a new "condition" to the license terms, so that the executables file cannot be broken or hacked in any way. The attacker's computer will be disabled with a correct attack method against the other party who wants to hack.
-            I know this method may remind you of companies like "cloudflare" "nintendo" "google" but with this method, a layer of protection against the non-market ecosystem will come into play and since these standards and software responsibilities are on the manufacturer, this is the only legal and logical way. isitdefine, in other words, is it you definetivitiliy, with this method, the attacker's necessary memory footprints or non-running pid or non-identity file internal system attacks are detected and the software is now open to access by obtaining the necessary permissions from the computer and after is it define is triggered, the function that will disable the target attacker's computer is activated.
-            If you do not need to obtain sysroot permissions, you can detect additional memory structures that will infiltrate the system in permissionless mode or attack according to the attacker's memory footprints and disable the system in any way you want.
-            You can understand better with the photo example below
-          </p>
-        </section>
+  <main>
+    <section id="overview">
+      <h2>📘 Overview</h2>
+      <p>
+        <strong>Floatboat</strong> is a secure execution environment designed to interpret and execute programs under the <strong>SPELF</strong> standard (Secure Portable Executable Linktable Formattable).
+        SPELF ensures security, consistency, and modularity in portable binary formats.
+        This documentary is just official explanations. Therefore, you can find the instructions you need to use it here. "Floatboat", namely floating-boat floater-boat, this term should actually be developed more widely and standardly for the float-based data type of the software and to emphasize the security innovative open standards and to emphasize that you are as alone as a boat on the shore of the sea in this cyber world. Just like the security layer of an executables file, this layer can always be easily solved and hacked. In fact, there have been those who have tried to establish a market ecosystem on it. That's why many software have tried to prevent these methods with web-based solutions, but the problem is that standard and new solutions have been produced to prevent the protection of executables files, but despite this, hackers have tried to be successful with methods such as "cracking", "dumping", "dissambelly", but this era is over. This software  give you the rights to protect your executables file and manage it. It will be a software that will deter attackers by giving unlimited access and will add a new "condition" to the license terms, so that the executables file cannot be broken or hacked in any way. The attacker's computer will be disabled with a correct attack method against the other party who wants to hack. I know this method may remind you of companies like "cloudflare" "nintendo" "google" but with this method, a layer of protection against the non-market ecosystem will come into play and since these standards and software responsibilities are on the manufacturer, this is the only legal and logical way. isitdefine, in other words, is it you definetivitiliy, with this method, the attacker's necessary memory footprints or running pid or non-identity file internal system attacks are detected and the software is now open to access by obtaining the necessary permissions from the computer and after is it define is triggered, the function that will disable the target attacker's computer is activated. If you do not need to obtain sysroot permissions, you can detect additional memory structures that will infiltrate the system in permissionless mode or attack according to the attacker's memory footprints and disable the system in any way you want. You can understand better with the photo example below.
+      
+      </p>
+    </section>
 
-        <section id="deep-architecture" class="mb-16">
-          <h2 class="text-3xl font-semibold mb-4">Deep Architecture</h2>
-          <p class="leading-relaxed text-lg">
-          </p>
-        </section>
+    <section id="spelf">
+      <h2>📦 SPELF Format Specification</h2>
+      <p>The SPELF format is divided into the following segments:</p>
+      <ul>
+        <li><strong>Header:</strong> Metadata, security checksum, version control</li>
+        <li><strong>Code Segment:</strong> Encrypted or signed instruction blocks</li>
+        <li><strong>Linktable:</strong> External symbols, memory references</li>
+        <li><strong>Resource Section:</strong> Embedded data, formattable blobs</li>
+      </ul>
+      <pre><code>
+[ SPELF HEADER ]
+[ CODE SEGMENT ]
+[ LINKTABLE ]
+[ RESOURCES ]
+      </code></pre>
+    </section>
 
-        <section id="advanced-topics">
-          <h2 class="text-3xl font-semibold mb-4">Advanced Topics</h2>
-          <p class="leading-relaxed text-lg">
-          </p>
-        </section>
-      </main>
-    </div>
-  </div>
+    <section id="usage">
+      <h2>🛠️ Installation & Usage</h2>
+      <p>To run a SPELF executable, use the Floatboat runtime:</p>
+      <pre><code>floatboat run secure_program.spelf</code></pre>
+    </section>
+
+    <section id="cli">
+      <h2>🧭 CLI Interface</h2>
+      <p>Available commands:</p>
+      <pre><code>
+floatboat run &lt;file.spelf&gt;
+floatboat verify &lt;file.spelf&gt;
+floatboat dump --section headers
+      </code></pre>
+    </section>
+
+    <section id="examples">
+      <h2>🔍 Examples</h2>
+      <p>Sample execution:</p>
+      <pre><code>
+$ floatboat run system-init.spelf
+[✔] Secure checksum verified.
+[✔] Executing @main.entry ...
+      </code></pre>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Floatboat Consortium • Secure by Design • SPELF Standard v1.0</p>
+  </footer>
 
   <script>
-    function toggleTheme() {
-      if (document.documentElement.classList.contains('dark')) {
-        document.documentElement.classList.remove('dark');
-        localStorage.theme = 'light';
-      } else {
-        document.documentElement.classList.add('dark');
-        localStorage.theme = 'dark';
-      }
-    }
+    const button = document.getElementById('themeToggle');
+    button.onclick = () => {
+      const html = document.documentElement;
+      const isDark = html.dataset.theme === 'dark';
+      html.dataset.theme = isDark ? 'light' : 'dark';
+      button.textContent = isDark ? '🌙 Dark Mode' : '☀️ Light Mode';
+    };
   </script>
 </body>
 </html>

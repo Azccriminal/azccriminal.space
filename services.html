@@ -25,37 +25,6 @@
         cursor: none;
         overflow-y: auto;
     }
-    #ninja-docs-message {
-  position: fixed;
-  top: 20%;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 20px 40px;
-  background: rgba(0,0,0,0.85);
-  color: #00ffcc;
-  font-family: 'Courier New', monospace;
-  font-size: 24px;
-  border-radius: 12px;
-  z-index: 9999;
-  animation: ninjaAppear 2s ease-out forwards;
-  pointer-events: none;
-}
-
-@keyframes ninjaAppear {
-  0% {
-    opacity: 0;
-    transform: translate(-50%, -100%) scale(0.5) rotate(-20deg);
-    filter: blur(10px);
-  }
-  50% {
-    opacity: 1;
-    transform: translate(-50%, 0%) scale(1.05) rotate(0deg);
-    filter: blur(0px);
-  }
-  100% {
-    transform: translate(-50%, 0%) scale(1) rotate(0deg);
-  }
-}
     .social-icon {
         width: 100px; /* Genişlik 100px */
         height: 100px; /* Yükseklik 100px */
@@ -343,9 +312,18 @@
             <p>This project is based on large language models and a system-level automation framework. It enables users to interact with the system through kernel modules, while the AI layer handles I/O, device, and system components as if it were part of a robotic intelligence structure. Tasks that would normally require manual effort are handled quickly and efficiently by the AI system, allowing for smoother and more autonomous interactions with your Linux environment. Currently, the project supports core components such as I/O management, CPU control, and PCIe (PCIO) operations. If you'd like to contribute to the project, the source code is open.</p>
             <a href="https://github.com/Zamanhuseyinli/Linux-AI">Linux-AI Source code</a>
         </div>
-        <div id="ninja-docs-message" style="display:none;">
-  <span>Docs and mores...</span>
+        <div class="service-item">
+            <img src="https://repository-images.githubusercontent.com/987837176/7309a659-ffca-4a6c-9f71-11df55d931b3" alt="Floatboat" class="social-icon">
+            <h3>Floatboat</h3>
+            <p>Spelf software utility also known as Secure portable executable linktable formativable. A software structure structured on float data type and other types used for a more secure binary file variation.</p>
+            <a href="https://azccriminal.space/doc/spelf-standart-doc.html">SPELF-DOC !WARNING SOFTWARED USED ONCE WRITING RECOMMENDED</a>
+            <a href="https://github.com/Azccriminal/floatboat">Floatboat source code</a>
+        </div>
+        
+        
+        <button class="cta-button" id="exploreButton">Explore More Services</button>
     </div>
+    
     <!-- Custom Cybernetic Cursor -->
     <div class="cursor" id="cursor"></div>
 
@@ -373,21 +351,6 @@
         exploreButton.addEventListener('click', () => {
             alert("Explore More Services section will be coming soon!");
         });
-        document.querySelectorAll('#doc-link').forEach(docLink => {
-  docLink.addEventListener('click', function(e) {
-    const msg = document.getElementById('ninja-docs-message');
-    msg.style.display = 'block';
-
-    msg.classList.remove('ninja-active');
-    void msg.offsetWidth; // animasyonu sıfırlamak için reflow
-    msg.classList.add('ninja-active');
-
-    setTimeout(() => {
-      msg.style.display = 'none';
-    }, 3000); // 3 saniye sonra kaybolur
-  });
-});
-
     </script>
 </body>
-</html>
+</html> 

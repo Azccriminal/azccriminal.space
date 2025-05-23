@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Doc Library</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
+</head>
+<body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+  <div class="min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="w-full bg-gray-100 dark:bg-gray-800 p-4 shadow-md sticky top-0 z-50">
+      <div class="container mx-auto flex justify-between items-center">
+        <h1 class="text-2xl font-bold">AzDocumentation</h1>
+        <button onclick="toggleTheme()" class="bg-gray-300 dark:bg-gray-700 px-3 py-1 rounded text-sm">Toggle Theme</button>
+      </div>
+    </header>
+
+    <div class="flex flex-1">
+      <!-- Sidebar -->
+      <aside class="w-64 bg-gray-50 dark:bg-gray-800 p-6 overflow-auto hidden lg:block border-r dark:border-gray-700">
+        <nav class="space-y-2">
+          <a href="#getting-started" class="block py-2 px-3 rounded hover:bg-gray-200 dark:hover:bg-gray-700">Getting Started</a>
+          <a href="#deep-architecture" class="block py-2 px-3 rounded hover:bg-gray-200 dark:hover:bg-gray-700">Deep Architecture</a>
+          <a href="#advanced-topics" class="block py-2 px-3 rounded hover:bg-gray-200 dark:hover:bg-gray-700">Advanced Topics</a>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="flex-1 p-8 overflow-y-auto">
+        <section id="getting-started" class="mb-16">
+          <h2 class="text-3xl font-semibold mb-4">Getting Started</h2>
+          <p class="leading-relaxed text-lg">
+           This documentary is just official explanations. Therefore, you can find the instructions you need to use it here. "Floatboat", namely floating-boat floater-boat, this term should actually be developed more widely and standardly for the float-based data type of the software and to emphasize the security innovative open standards and to emphasize that you are as alone as a boat on the shore of the sea in this cyber world. Just like the security layer of an executables file, this layer can always be easily solved and hacked. In fact, there have been those who have tried to establish a market ecosystem on it. That's why many software have tried to prevent these methods with web-based solutions, but the problem is that standard and new solutions have been produced to prevent the protection of executables files, but despite this, hackers have tried to be successful with methods such as "cracking", "dumping", "dissambelly", but this era is over. This software does not give you the rights to protect your executables file and manage it. It will be a software that will deter attackers by giving unlimited access and will add a new "condition" to the license terms, so that the executables file cannot be broken or hacked in any way. The attacker's computer will be disabled with a correct attack method against the other party who wants to hack.
+            I know this method may remind you of companies like "cloudflare" "nintendo" "google" but with this method, a layer of protection against the non-market ecosystem will come into play and since these standards and software responsibilities are on the manufacturer, this is the only legal and logical way. isitdefine, in other words, is it you definetivitiliy, with this method, the attacker's necessary memory footprints or non-running pid or non-identity file internal system attacks are detected and the software is now open to access by obtaining the necessary permissions from the computer and after is it define is triggered, the function that will disable the target attacker's computer is activated.
+            If you do not need to obtain sysroot permissions, you can detect additional memory structures that will infiltrate the system in permissionless mode or attack according to the attacker's memory footprints and disable the system in any way you want.
+            You can understand better with the photo example below
+          </p>
+        </section>
+
+        <section id="deep-architecture" class="mb-16">
+          <h2 class="text-3xl font-semibold mb-4">Deep Architecture</h2>
+          <p class="leading-relaxed text-lg">
+          </p>
+        </section>
+
+        <section id="advanced-topics">
+          <h2 class="text-3xl font-semibold mb-4">Advanced Topics</h2>
+          <p class="leading-relaxed text-lg">
+          </p>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.theme = 'light';
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.theme = 'dark';
+      }
+    }
+  </script>
+</body>
+</html>
